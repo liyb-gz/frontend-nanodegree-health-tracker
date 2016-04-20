@@ -45,8 +45,6 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-md-12">
 								<div class="panel panel-default food-item">
 									<div class="panel-body">
 										<button class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-plus"></span></button>
@@ -89,6 +87,9 @@
 											</div>
 										</div>
 									</div>
+								</div>
+								<div class="panel panel-default food-item" id="testing-search-food">
+
 								</div>
 							</div>
 							<div class="col-md-12">
@@ -210,11 +211,86 @@
 									</div>
 								</div>
 							</div>
+							<div class="col-md-12 food-list">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="panel panel-default food-item" id="testing-food-view">
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<!-- Backbone Templates -->
+		<!-- Food Item -->
+		<script type="text/template" id="food-item-template">
+			<div class="panel-body">
+
+				<% if (type === 'search') { %>
+					<button class="btn btn-default btn-xs pull-right">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				<% } else { %>
+					<div class="btn-group pull-right" role="group">
+						<button class="btn btn-default btn-xs btn-edit"><span class="glyphicon glyphicon-pencil"></span></button>
+						<button class="btn btn-default btn-xs btn-delete"><span class="glyphicon glyphicon-minus"></span></button>
+					</div>
+				<% } %>
+
+				<div class="food-abstract pull-left">
+					<h4 class="food-name"><%= foodName %><small> <%= brandName %></small>
+					</h4>
+					<% if (type === 'search') { %>
+						<%= unitCalories %> kCal for every <%= servingUnit %>
+					<% } else { %>
+						<%= unitCalories %> kCal for 123every <%= servingUnit %>
+					<% } %>
+				</div>
+			</div>
+			<hr>
+			<div class="panel-body nutrition-facts">
+				<div class="row carbo">
+					<div class="col-sm-3">Carbohydrates</div>
+					<div class="col-sm-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%; min-width: 10%;">
+								<%= unitCarbo %> g
+							</div>
+						</div>
+						<form class="edit hidden">
+							<div class="input-group goal-edit">
+								<input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+								<div class="input-group-addon">kCal</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="row fat">
+					<div class="col-sm-3">Fat</div>
+					<div class="col-sm-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; min-width: 10%;">
+								30 g
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="row protain">
+					<div class="col-sm-3">Protain</div>
+					<div class="col-sm-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; min-width: 10%;">
+								15 g
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
 
 		<!-- build:js scripts/vendor.js -->
 		<!-- bower:js -->
@@ -244,6 +320,8 @@
 		<script src="scripts/models/food.js"></script>
 		<script src="scripts/collections/search_food.js"></script>
 		<script src="scripts/collections/my_food.js"></script>
+		<script src="scripts/views/my_food_view.js"></script>
+		<script src="scripts/views/food_view.js"></script>
 		<script src="scripts/main.js"></script>
 		<!-- endbuild -->
 	</body>

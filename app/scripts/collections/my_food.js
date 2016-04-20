@@ -5,3 +5,4 @@ app.MyFood = Backbone.Collection.extend({
 });
 
 var testingMyFood = new app.MyFood();
+testingMyFood.add(testingFood);

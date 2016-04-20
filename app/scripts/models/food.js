@@ -44,5 +44,5 @@ var testingFood = new app.Food({
 	unitFat: 5,
 	unitProtein: 10,
 	servingQty: 2.5,
-	servingUnit: '100 gram'
+	servingUnit: '100 grams'
 });
