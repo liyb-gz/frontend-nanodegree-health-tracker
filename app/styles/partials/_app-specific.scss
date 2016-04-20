@@ -10,9 +10,17 @@
 	}
 }
 
-.search-results-items,
+.search-results {
+	max-height: 100%;
+}
+
+.search-results-items {
+	max-height: calc(100vh - 246px);
+	overflow-y: auto;
+}
+
 .food-list {
-	max-height: 70vh; // TODO: use Javascipt to decide the height
+	max-height: calc(100vh - 246px); // TODO: use Javascipt to decide the height
 	overflow-y: auto;
 }
 
@@ -29,6 +37,10 @@
 			margin: 5px 0;
 		}
 	}
+}
+
+.food-abstract {
+	max-width: calc(100% - 50px);
 }
 
 .search-results-title {
