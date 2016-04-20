@@ -1,0 +1,40 @@
+.jumbotron-food {
+	background: url('../images/food.jpg') center center / cover no-repeat;
+}
+
+.search {
+	margin-bottom: 20px;
+
+	input {
+		padding: 20px;
+	}
+}
+
+.search-results-items,
+.food-list {
+	max-height: 70vh; // TODO: use Javascipt to decide the height
+	overflow-y: auto;
+}
+
+.food-item {
+	&:hover {
+		background-color: darken($btn-default-bg, 5%);
+
+		hr {
+			border-top: 1px solid darken($hr-border, 5%);
+		}
+	}
+
+	hr {
+		margin: 0;
+	}
+}
+
+.search-results-title {
+	margin-bottom: 20px;
+}
+
+.goal-edit {
+	margin-bottom: 6px;
+}
+

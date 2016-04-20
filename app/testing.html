@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Nutritionix API testing</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<ul>
+	<li>Item Name</li>
+	<li>Brand Name</li>
+	<li>Calories</li>
+	<li>Serving size</li>
+	<li>Serving quantity</li>
+</ul>
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+<script>
+	$.getJSON('https://api.nutritionix.com/v1_1/search/mcdonalds?results=0:20&fields=item_name,brand_name,item_id,nf_calories&appId=8a3b278b&appKey=c2b176dfe053caed76d3baea5818c350', function (data) {
+		console.log('success');
+		console.log(data);
+	});
+</script>
+</body>
+</html>

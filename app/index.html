@@ -1,18 +1,13 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Project_5_HealthTracker</title>
+		<title>Project 5 HealthTracker</title>
 
 		<link rel="apple-touch-icon" href="apple-touch-icon.png">
 		<!-- Place favicon.ico in the root directory -->
-
-		<!-- build:css styles/vendor.css -->
-		<!-- bower:css -->
-		<!-- endbower -->
-		<!-- endbuild -->
 
 		<!-- build:css styles/main.css -->
 		<link rel="stylesheet" href="styles/main.css">
@@ -23,40 +18,198 @@
 			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 
-		<div class="container">
-			<div class="header">
-				<ul class="nav nav-pills pull-right">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-				<h3 class="text-muted">Project_5_HealthTracker</h3>
-			</div>
+		<div class="header">
+			<h3 class="text-muted">HealthTracker</h3>
+		</div>
 
-			<div class="jumbotron">
-				<h1>'Allo, 'Allo!</h1>
-				<p class="lead">Always a pleasure scaffolding your apps.</p>
-				<p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
-			</div>
-
-			<div class="row marketing">
-				<div class="col-lg-6">
-					<h4>HTML5 Boilerplate</h4>
-					<p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-					<h4>Sass</h4>
-					<p>Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.</p>
-
-					<h4>Bootstrap</h4>
-					<p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-					<h4>Modernizr</h4>
-					<p>Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.</p>
-
+		<div class="jumbotron jumbotron-food">
+			<div class="row">
+				<div class="col-md-6">
+					<form class="search">
+						<input type="text" class="form-control" placeholder="Search for your food!">
+					</form>
+					<div class="well well-transparent search-results">
+						<h3 class="text-muted search-results-title">Search Results</h3>
+						<div class="loading hidden">
+							<span class="glyphicon glyphicon-refresh animate" aria-hidden="true"></span> Loading...
+						</div>
+						<div class="row search-results-items">
+							<div class="col-md-12">
+								<div class="panel panel-default food-item">
+									<div class="panel-body">
+										<button class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-plus"></span></button>
+										<div class="food-abstract pull-left">
+											<h4 class="food-name">Food Name<small> Brand Name</small>
+											</h4>
+											300 kCal per serving
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="panel panel-default food-item">
+									<div class="panel-body">
+										<button class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-plus"></span></button>
+										<div class="food-abstract pull-left">
+											<h4 class="food-name">Food Name<small> Brand Name</small>
+											</h4>
+											300 kCal per serving
+										</div>
+									</div>
+									<hr>
+									<div class="panel-body nutrition-facts">
+										<div class="row carbo">
+											<div class="col-sm-3">Carbohydrates</div>
+											<div class="col-sm-9">
+												<div class="progress">
+													<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%; min-width: 10%;">
+														20 g
+												  </div>
+												</div>
+											</div>
+										</div>
+										<div class="row fat">
+											<div class="col-sm-3">Fat</div>
+											<div class="col-sm-9">
+												<div class="progress">
+													<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; min-width: 10%;">
+														30 g
+												  </div>
+												</div>
+											</div>
+										</div>
+										<div class="row protain">
+											<div class="col-sm-3">Protain</div>
+											<div class="col-sm-9">
+												<div class="progress">
+													<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; min-width: 10%;">
+														15 g
+												  </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<button class="btn btn-default btn-block">
+									<span class="done">Load more...</span>
+									<span class="loading hidden"><span class="glyphicon glyphicon-refresh animate" aria-hidden="true"></span> Loading...</span>
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-
-			<div class="footer">
-				<p>♥ from the Yeoman team</p>
+				<div class="col-md-6">
+					<div class="well well-transparent my-foods">
+						<div class="row">
+							<div class="col-md-12 stats">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<h3 class="title">My Nutritions Today
+											<small><button class="btn btn-xs btn-link pull-right edit-goals">Edit Goals</button></small>
+										</h3>
+										<hr>
+										<div class="nutrition-facts">
+											<div class="row calories">
+												<div class="col-sm-3">Calories</div>
+												<div class="col-sm-9">
+													<div class="progress">
+														<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%; min-width: 10%;">
+															200 kCal
+													  </div>
+													</div>
+													<form>
+														<div class="input-group goal-edit hidden">
+														    <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+														    <div class="input-group-addon">kCal</div>
+														    </div>
+													</form>
+												</div>
+											</div>
+											<div class="row carbo">
+												<div class="col-sm-3">Carbohydrates</div>
+												<div class="col-sm-9">
+													<div class="progress">
+														<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%; min-width: 10%;">
+															20 g
+													  </div>
+													</div>
+												</div>
+											</div>
+											<div class="row fat">
+												<div class="col-sm-3">Fat</div>
+												<div class="col-sm-9">
+													<div class="progress">
+														<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; min-width: 10%;">
+															30 g
+													  </div>
+													</div>
+												</div>
+											</div>
+											<div class="row protain">
+												<div class="col-sm-3">Protain</div>
+												<div class="col-sm-9">
+													<div class="progress">
+														<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; min-width: 10%;">
+															15 g
+													  </div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 food-list">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="panel panel-default food-item">
+											<div class="panel-body">
+												<button class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-minus"></span></button>
+												<div class="food-abstract pull-left">
+													<h4 class="food-name">Food Name<small> Brand Name</small>
+													</h4>
+													300 kCal per serving
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default food-item">
+											<div class="panel-body">
+												<button class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-minus"></span></button>
+												<div class="food-abstract pull-left">
+													<h4 class="food-name">Food Name<small> Brand Name</small>
+													</h4>
+													300 kCal per serving
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default food-item">
+											<div class="panel-body">
+												<button class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-minus"></span></button>
+												<div class="food-abstract pull-left">
+													<h4 class="food-name">Food Name<small> Brand Name</small>
+													</h4>
+													300 kCal per serving
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default food-item">
+											<div class="panel-body">
+												<button class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-minus"></span></button>
+												<div class="food-abstract pull-left">
+													<h4 class="food-name">Food Name<small> Brand Name</small>
+													</h4>
+													300 kCal per serving
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -83,6 +236,7 @@
 		<!-- endbuild -->
 
 		<!-- build:js scripts/main.js -->
+		<script src="scripts/models/food.js"></script>
 		<script src="scripts/main.js"></script>
 		<!-- endbuild -->
 	</body>
