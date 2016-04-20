@@ -16,7 +16,7 @@
 </ul>
 <script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
 <script>
-	$.getJSON('https://api.nutritionix.com/v1_1/search/mcdonalds?results=0:20&fields=item_name,brand_name,item_id,nf_calories&appId=8a3b278b&appKey=c2b176dfe053caed76d3baea5818c350', function (data) {
+	$.getJSON('https://api.nutritionix.com/v1_1/search/mcdonalds?results=0:20&fields=item_name,brand_name,item_id,nf_calories,nf_total_carbohydrate,nf_total_fat,nf_protein,nf_serving_size_qty,nf_serving_size_unit,nf_serving_weight_grams&appId=8a3b278b&appKey=c2b176dfe053caed76d3baea5818c350', function (data) {
 		console.log('success');
 		console.log(data);
 	});

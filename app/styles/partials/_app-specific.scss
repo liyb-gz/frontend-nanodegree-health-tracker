@@ -17,6 +17,8 @@
 }
 
 .food-item {
+	cursor: pointer;
+
 	&:hover {
 		background-color: darken($btn-default-bg, 5%);
 
