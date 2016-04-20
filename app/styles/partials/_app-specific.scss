@@ -2,7 +2,7 @@
 	background: url('../images/food.jpg') center center / cover no-repeat;
 }
 
-.search {
+.search-form {
 	margin-bottom: 20px;
 
 	input {
@@ -17,18 +17,17 @@
 }
 
 .food-item {
-	cursor: pointer;
 
 	&:hover {
 		background-color: darken($btn-default-bg, 5%);
-
-		hr {
-			border-top: 1px solid darken($hr-border, 5%);
-		}
 	}
 
-	hr {
-		margin: 0;
+	.nutrition-facts {
+		border-top: 1px solid $panel-inner-border;
+
+		hr {
+			margin: 5px 0;
+		}
 	}
 }
 
