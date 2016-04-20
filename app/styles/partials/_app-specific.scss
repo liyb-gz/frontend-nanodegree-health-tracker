@@ -15,13 +15,17 @@
 }
 
 .search-results-items {
-	max-height: calc(100vh - 246px);
-	overflow-y: auto;
+	@media screen and (min-width: 768px) {
+		max-height: calc(100vh - 246px);
+		overflow-y: auto;
+	}
 }
 
 .food-list {
-	max-height: calc(100vh - 246px); // TODO: use Javascipt to decide the height
-	overflow-y: auto;
+	@media screen and (min-width: 768px) {
+		max-height: calc(100vh - 246px); // TODO: use Javascipt to decide the height
+		overflow-y: auto;
+	}
 }
 
 .food-item {
