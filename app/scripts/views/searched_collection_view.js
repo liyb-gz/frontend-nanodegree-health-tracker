@@ -6,16 +6,17 @@ app.SearchedCollectionView = Backbone.View.extend({
 
 	events: {
 		'mouseover .search-form': 'focusOnSearch',
-		'keyup .search-form' : 'search'
+		'keyup .search-form' : 'newSearch'
 	},
 
 	initialize: function () {
-		_.bindAll(this, 'focusOnSearch', 'clearAll', 'search');
+		_.bindAll(this, 'focusOnSearch', 'clearAll', 'newSearch');
 
 		this.$list = this.$('.search-results-items');
 		this.$loadingBar = this.$('.loading');
 		this.$form = this.$('.search-form');
 		this.$searchBar = this.$('.search-form input');
+		this.$noResultBar = this.$('.no-result');
 		this.ajaxRequest = undefined;
 
 
@@ -31,6 +32,14 @@ app.SearchedCollectionView = Backbone.View.extend({
 			});
 			this.$list.append(newView.render().el);
 		}, this);
+	},
+
+	render: function () {
+		if (this.collection.length === 0) {
+			this.$noResultBar.show('fast');
+		} else {
+			this.$noResultBar.hide('fast');
+		}
 	},
 
 	addOne: function (item) {
@@ -98,7 +107,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 		return model;
 	},
 
-	search: function (e) {
+	newSearch: function (e) {
 		var self = this;
 
 		// Do nothing when enter key is pressed.
@@ -124,6 +133,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 			}
 		}).always(function () {
 			self.toggleLoading('show');
+			self.render();
 		});
 	}
 });
