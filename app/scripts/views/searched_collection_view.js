@@ -137,7 +137,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 
 	getTotal: function () {
 		return this.ajaxTotal;
-	}
+	},
 
 	changeTotal: function () {
 		if (this.getTotal() > 0) {
