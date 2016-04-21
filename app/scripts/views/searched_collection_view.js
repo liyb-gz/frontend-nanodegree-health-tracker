@@ -17,6 +17,8 @@ app.SearchedCollectionView = Backbone.View.extend({
 			'focusOnSearch',
 			'toggleLoading',
 			'toggleLoadMoreBtn',
+			'setTotal',
+			'getTotal',
 			'clearAll',
 			'getSearchURL',
 			'getSearchedFoodModel',
@@ -32,11 +34,12 @@ app.SearchedCollectionView = Backbone.View.extend({
 		this.$searchBar = this.$('.search-form input');
 		this.$noResultBar = this.$('.no-result');
 		this.$loadMoreBtn = this.$('.btn-loadmore');
+		this.$searchResultsNumber = this.$('.search-results-number');
 
 		// Vars to track of searches
 		this.searchKeyword = '';
 		this.ajaxRequest = undefined;
-		this.ajaxTotal = 0;
+		this.setTotal(0);
 
 		// Prevent form from submitting
 		this.$form.submit(function (e) {
@@ -44,6 +47,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 		});
 
 		// Bind to collection changes
+		this.on('change:ajaxTotal', this.changeTotal);
 		this.listenTo(this.collection, 'add', this.addOne);
 
 		// Load initial items, if any
@@ -126,6 +130,23 @@ app.SearchedCollectionView = Backbone.View.extend({
 		}
 	},
 
+	setTotal: function (value) {
+		this.ajaxTotal = value;
+		this.trigger('change:ajaxTotal');
+	},
+
+	getTotal: function () {
+		return this.ajaxTotal;
+	}
+
+	changeTotal: function () {
+		if (this.getTotal() > 0) {
+			this.$searchResultsNumber.show('fast').find('.number').html(this.getTotal());
+		} else {
+			this.$searchResultsNumber.hide('fast');
+		}
+	},
+
 	clearAll: function () {
 		_.each(_.clone(this.collection.models), function (model) {
 			model.destroy();
@@ -197,7 +218,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 		}
 
 		this.ajaxRequest = $.getJSON(this.getSearchURL(), function(json, textStatus) {
-			self.ajaxTotal = json.total_hits;
+			self.setTotal(json.total_hits);
 			json.hits.forEach(function (item) {
 				self.collection.add(self.getSearchedFoodModel(item));
 			});
@@ -205,7 +226,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 			// If the error is caused by our abortion, then don't worry about it
 			if (textStatus !== 'abort') {
 				console.log('Search result failed to load.');
-				self.ajaxTotal = 0;
+				self.setTotal(0);
 			}
 		}).always(function () {
 			self.render();
@@ -213,7 +234,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 	},
 
 	isAbleLoadMore: function () {
-		return this.collection.length < this.ajaxTotal;
+		return this.collection.length < this.getTotal();
 	}
 });
 
