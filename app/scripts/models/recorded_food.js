@@ -14,6 +14,8 @@ app.RecordedFood = app.SearchedFood.extend({
 			'changeServing',
 			'recalculateNutrition'
 		);
+
+		//It can be simple on('change'), but I think being more specific is good.
 		this.on('change:servingQty', this.changeServing);
 
 		this.recalculateNutrition();

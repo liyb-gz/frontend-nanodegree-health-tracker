@@ -161,6 +161,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="panel panel-default food-item" id="testing-food-view">
+											123
 										</div>
 									</div>
 								</div>
@@ -172,12 +173,35 @@
 		</div>
 
 		<!-- Backbone Templates -->
-		<!-- Food Item -->
+		<!-- Searched Food Item -->
 		<script type="text/template" id="searched-food-item-template">
 			<div class="panel-body">
 				<div class="btn-group pull-right">
 					<button class="btn btn-default btn-xs btn-detail"><span class="glyphicon glyphicon-resize-full"></span></button>
 					<button class="btn btn-default btn-xs btn-add"><span class="glyphicon glyphicon-plus"></span></button>
+				</div>
+				<div class="food-abstract pull-left">
+					<h4 class="food-name"><%= foodName %><small> <%= brandName %></small>
+					</h4>
+					<%= unitCalories %> kCal per <%= servingUnit %>
+				</div>
+			</div>
+			<div class="panel-body nutrition-facts" style="display:none;">
+				Carbohydrates <span class="pull-right"><%= unitCarbo %> g</span>
+				<hr>
+				Fat <span class="pull-right"><%= unitFat %> g</span>
+				<hr>
+				Protain <span class="pull-right"><%= unitProtein %> g</span>
+			</div>
+		</script>
+
+		<!-- Recorded Food Item -->
+		<script type="text/template" id="recorded-food-item-template">
+			<div class="panel-body">
+				<div class="btn-group pull-right">
+					<button class="btn btn-default btn-xs btn-detail"><span class="glyphicon glyphicon-resize-full"></span></button>
+					<button class="btn btn-default btn-xs btn-edit"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button class="btn btn-default btn-xs btn-drop"><span class="glyphicon glyphicon-minus"></span></button>
 				</div>
 				<div class="food-abstract pull-left">
 					<h4 class="food-name"><%= foodName %><small> <%= brandName %></small>
@@ -224,6 +248,7 @@
 		<script src="scripts/collections/searched_food_collection.js"></script>
 		<script src="scripts/collections/recorded_food_collection.js"></script>
 		<script src="scripts/views/searched_food_view.js"></script>
+		<script src="scripts/views/recorded_food_view.js"></script>
 		<script src="scripts/views/searched_collection_view.js"></script>
 		<script src="scripts/main.js"></script>
 		<!-- endbuild -->

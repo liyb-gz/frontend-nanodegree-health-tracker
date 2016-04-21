@@ -29,5 +29,8 @@ app.SearchedFoodView = Backbone.View.extend({
 
 	toggleDetails: function () {
 		this.$('.nutrition-facts').toggle('fast');
+		this.$('.btn-detail')
+			.find('.glyphicon')
+			.toggleClass('glyphicon-resize-full glyphicon-resize-small');
 	}
 });
