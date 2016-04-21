@@ -26,17 +26,17 @@ app.RecordedFood = app.SearchedFood.extend({
 	},
 
 	recalculateNutrition: function () {
-		this.set('totalCalories', this.get('unitCalories') * this.get('servingQty'));
-		this.set('totalCarbo', this.get('unitCarbo') * this.get('servingQty'));
-		this.set('totalFat', this.get('unitFat') * this.get('servingQty'));
-		this.set('totalProtein', this.get('unitProtein') * this.get('servingQty'));
+		this.set('totalCalories', (this.get('unitCalories') * this.get('servingQty')).toFixed(0));
+		this.set('totalCarbo', (this.get('unitCarbo') * this.get('servingQty')).toFixed(1));
+		this.set('totalFat', (this.get('unitFat') * this.get('servingQty')).toFixed(1));
+		this.set('totalProtein', (this.get('unitProtein') * this.get('servingQty')).toFixed(1));
 	}
 });
 
 // TODO: delete testing var
 
 var testingSearchedFood = new app.SearchedFood({
-	foodName: 'Burger',
+	foodName: 'Super Burger',
 	brandName: 'McDonald',
 	unitCalories: 200,
 	unitCarbo: 0,

@@ -62,15 +62,18 @@
 												<div class="col-sm-3">Calories</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%; min-width: 10%;">
-															200 kCal
-													  </div>
+														<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%; min-width: 10%;">
+															<span class="center">200 kCal</span>
+														</div>
+														<div class="bar-step" style="left: 75%">
+															<div class="label-line"></div>
+														</div>
 													</div>
 													<form>
 														<div class="input-group goal-edit hidden">
-														    <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-														    <div class="input-group-addon">kCal</div>
-														    </div>
+															<input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+															<div class="input-group-addon">kCal</div>
+														</div>
 													</form>
 												</div>
 											</div>
@@ -79,8 +82,11 @@
 												<div class="col-sm-9">
 													<div class="progress">
 														<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%; min-width: 10%;">
-															20 g
-													  </div>
+															<span class="center">20 g</span>
+														</div>
+														<div class="bar-step" style="left: 75%">
+															<div class="label-line"></div>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -88,9 +94,12 @@
 												<div class="col-sm-3">Fat</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; min-width: 10%;">
-															30 g
-													  </div>
+														<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; min-width: 10%;">
+															<span class="center">30 g</span>
+														</div>
+														<div class="bar-step" style="left: 75%">
+															<div class="label-line"></div>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -98,9 +107,12 @@
 												<div class="col-sm-3">Protain</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; min-width: 10%;">
-															15 g
-													  </div>
+														<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; min-width: 10%;">
+															<span class="center">15 g</span>
+														</div>
+														<div class="bar-step" style="left: 75%">
+															<div class="label-line"></div>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -113,34 +125,47 @@
 									<div class="col-md-12">
 										<div class="panel panel-default food-item">
 											<div class="panel-body">
-												<button class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-minus"></span></button>
+												<div class="btn-group pull-right">
+													<button class="btn btn-default btn-xs btn-detail"><span class="glyphicon glyphicon-resize-full"></span></button>
+													<button class="btn btn-default btn-xs btn-edit"><span class="glyphicon glyphicon-pencil"></span></button>
+													<button class="btn btn-default btn-xs btn-drop"><span class="glyphicon glyphicon-minus"></span></button>
+												</div>
 												<div class="food-abstract pull-left">
-													<h4 class="food-name">Food Name<small> Brand Name</small>
+													<h4 class="food-name">Food Name<small> brand Name </small>
 													</h4>
 													300 kCal per serving
 												</div>
 											</div>
-										</div>
-										<div class="panel panel-default food-item">
-											<div class="panel-body">
-												<div class="btn-group pull-right" role="group">
-													<button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
-													<button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-minus"></span></button>
+											<div class="panel-body nutrition-facts">
+												<div class="row carbo">
+													<div class="col-sm-3">Carbohydrates</div>
+													<div class="col-sm-9">
+														<div class="progress">
+															<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%; min-width: 10%;">
+																20 g
+														  </div>
+														</div>
+													</div>
 												</div>
-												<div class="food-abstract pull-left">
-													<h4 class="food-name">Food Name<small> Brand Name</small>
-													</h4>
-													300 kCal per serving
+												<div class="row fat">
+													<div class="col-sm-3">Fat</div>
+													<div class="col-sm-9">
+														<div class="progress">
+															<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; min-width: 10%;">
+																30 g
+														  </div>
+														</div>
+													</div>
 												</div>
-											</div>
-										</div>
-										<div class="panel panel-default food-item">
-											<div class="panel-body">
-												<button class="btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-minus"></span></button>
-												<div class="food-abstract pull-left">
-													<h4 class="food-name">Food Name<small> Brand Name</small>
-													</h4>
-													300 kCal per serving
+												<div class="row protain">
+													<div class="col-sm-3">Protain</div>
+													<div class="col-sm-9">
+														<div class="progress">
+															<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; min-width: 10%;">
+																15 g
+														  </div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -161,7 +186,6 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="panel panel-default food-item" id="testing-food-view">
-											123
 										</div>
 									</div>
 								</div>
@@ -202,19 +226,60 @@
 					<button class="btn btn-default btn-xs btn-detail"><span class="glyphicon glyphicon-resize-full"></span></button>
 					<button class="btn btn-default btn-xs btn-edit"><span class="glyphicon glyphicon-pencil"></span></button>
 					<button class="btn btn-default btn-xs btn-drop"><span class="glyphicon glyphicon-minus"></span></button>
+					<button class="btn btn-success btn-xs btn-submit" style="display: none;"><span class="glyphicon glyphicon-ok"></span></button>
+					<button class="btn btn-danger btn-xs btn-cancel" style="display: none;"><span class="glyphicon glyphicon-remove"></span></button>
 				</div>
 				<div class="food-abstract pull-left">
-					<h4 class="food-name"><%= foodName %><small> <%= brandName %></small>
+					<h4 class="food-name">
+						<span><%= foodName %></span>
+						<input style="display: none;" type="text">
+						<small> <%= brandName %></small>
 					</h4>
-					<%= unitCalories %> kCal per <%= servingUnit %>
+					<div class="calories">
+						<b><%= totalCalories %> kCal</b> (<%= unitCalories %> kCal per <%= servingUnit %> × <span><%= servingQty %></span><input style="display: none;" type="text"> <%= servingUnit %>)
+					</div>
 				</div>
 			</div>
 			<div class="panel-body nutrition-facts" style="display:none;">
-				Carbohydrates <span class="pull-right"><%= unitCarbo %> g</span>
-				<hr>
-				Fat <span class="pull-right"><%= unitFat %> g</span>
-				<hr>
-				Protain <span class="pull-right"><%= unitProtein %> g</span>
+				<div class="row carbo">
+					<div class="col-sm-3">Carbohydrates</div>
+					<div class="col-sm-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-info" style="width: 10%; min-width: 85%;">
+								<span class="center"><%= totalCarbo %> g</span>
+							</div>
+							<div class="bar-step" style="left: 75%">
+								<div class="label-line"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row fat">
+					<div class="col-sm-3">Fat</div>
+					<div class="col-sm-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-warning" style="width: 50%; min-width: 10%;">
+								<span class="center"><%= totalFat %> g</span>
+							</div>
+							<div class="bar-step" style="left: 75%">
+								<div class="label-line"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row protain">
+					<div class="col-sm-3">Protain</div>
+					<div class="col-sm-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" style="width: 30%; min-width: 10%;">
+								<span class="center"><%= totalProtein %> g</span>
+							</div>
+							<div class="bar-step" style="left: 75%">
+								<div class="label-line"></div>
+							</div
+						</div>
+					</div>
+				</div>
 			</div>
 		</script>
 
