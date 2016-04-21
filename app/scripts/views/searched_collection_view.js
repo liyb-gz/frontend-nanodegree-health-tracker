@@ -6,19 +6,32 @@ app.SearchedCollectionView = Backbone.View.extend({
 
 	events: {
 		'mouseover .search-form': 'focusOnSearch',
-		'keyup .search-form' : 'newSearch'
+		'keyup .search-form' : 'newSearch',
+		'click .btn-loadmore' : 'loadMore'
 	},
 
 	initialize: function () {
-		_.bindAll(this, 'focusOnSearch', 'clearAll', 'newSearch');
+		_.bindAll(this,
+			'render',
+			'addOne',
+			'focusOnSearch',
+			'toggleLoading',
+			'clearAll',
+			'newSearch',
+			'isAbleLoadMore',
+			'loadMore'
+		);
 
 		this.$list = this.$('.search-results-items');
 		this.$loadingBar = this.$('.loading');
 		this.$form = this.$('.search-form');
 		this.$searchBar = this.$('.search-form input');
 		this.$noResultBar = this.$('.no-result');
-		this.ajaxRequest = undefined;
+		this.$loadMoreBtn = this.$('.btn-loadmore');
 
+		// Vars to track AJAX requests
+		this.ajaxRequest = undefined;
+		this.ajaxTotal = 0;
 
 		this.$form.submit(function (e) {
 			e.preventDefault();
@@ -35,10 +48,19 @@ app.SearchedCollectionView = Backbone.View.extend({
 	},
 
 	render: function () {
+		// Toggle "No result" message bar
 		if (this.collection.length === 0) {
 			this.$noResultBar.show('fast');
 		} else {
 			this.$noResultBar.hide('fast');
+		}
+
+		// Toggle "Load more" button
+		if (this.isAbleLoadMore()) {
+			this.$list.append(this.$loadMoreBtn);
+			this.$loadMoreBtn.show('fast');
+		} else {
+			this.$loadMoreBtn.hide('fast');
 		}
 	},
 
@@ -55,7 +77,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 	},
 
 	toggleLoading: function (status, speed) {
-		var speed = speed || 'fast';
+		var speed = speed || 'fast'; //default value: fast
 
 		switch(status) {
 			case 'load':
@@ -110,7 +132,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 	newSearch: function (e) {
 		var self = this;
 
-		// Do nothing when enter key is pressed.
+		// Do nothing when other keys are pressed.
 		if (e.which !== ENTER_KEY) {
 			return;
 		}
@@ -119,10 +141,13 @@ app.SearchedCollectionView = Backbone.View.extend({
 		this.toggleLoading('load');
 
 		if(this.ajaxRequest) {
+			// Abort the current ajax request
+			// There should be 1 ajax request only at the same time.
 			this.ajaxRequest.abort();
 		}
 
 		this.ajaxRequest = $.getJSON(this.getSearchURL(this.$searchBar.val()), function(json, textStatus) {
+			self.ajaxTotal = json.total_hits;
 			json.hits.forEach(function (item) {
 				self.collection.add(self.getSearchedFoodModel(item));
 			});
@@ -130,11 +155,20 @@ app.SearchedCollectionView = Backbone.View.extend({
 			// If the error is caused by our abortion, then don't worry about it
 			if (textStatus !== 'abort') {
 				console.log('Search result failed to load.');
+				self.ajaxTotal = 0;
 			}
 		}).always(function () {
 			self.toggleLoading('show');
 			self.render();
 		});
+	},
+
+	isAbleLoadMore: function () {
+		return this.collection.length < this.ajaxTotal;
+	},
+
+	loadMore: function () {
+		console.log('loadMore');
 	}
 });
 
