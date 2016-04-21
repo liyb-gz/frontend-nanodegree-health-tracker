@@ -175,6 +175,7 @@ app.SearchedCollectionView = Backbone.View.extend({
 		// so that we can use the old keyword for 'loadMore' button
 		// insteading of always using the search bar's value
 		this.searchKeyword = this.$searchBar.val();
+		this.$searchBar.blur();
 
 		this.clearAll();
 		this.toggleLoading('load');
