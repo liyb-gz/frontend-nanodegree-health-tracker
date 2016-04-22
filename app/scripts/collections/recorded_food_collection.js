@@ -16,7 +16,7 @@ var app = app || {};
 				sumProtein: 0
 			},
 
-			this.on('change:servingQty update', this.updateSumNutrition);
+			this.on('change:servingNumber update', this.updateSumNutrition);
 
 			this.updateSumNutrition();
 		},
@@ -47,4 +47,4 @@ var app = app || {};
 })(app);
 
 // TODO: delete this testing var
-app.recordedCollection.add(testingRecordedFood);
+// app.recordedCollection.add(testingRecordedFood);

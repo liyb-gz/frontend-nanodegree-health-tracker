@@ -85,7 +85,7 @@ var app = app || {};
 			// Toggle the input boxes
 			this.$('.food-name input').show().val(this.model.get('foodName'));
 			this.$('.food-name span').hide();
-			this.$('.calories input').show().val(this.model.get('servingQty'));
+			this.$('.calories input').show().val(this.model.get('servingNumber'));
 			this.$('.calories span').hide();
 
 			// Focus edit
@@ -99,7 +99,7 @@ var app = app || {};
 		submit: function () {
 			this.model.set({
 				foodName: this.$('.food-name input').val().trim(),
-				servingQty: parseFloat(this.$('.calories input').val())
+				servingNumber: parseFloat(this.$('.calories input').val())
 			});
 			this.endEdit();
 		},

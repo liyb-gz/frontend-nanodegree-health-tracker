@@ -165,7 +165,7 @@
 				<div class="food-abstract pull-left">
 					<h4 class="food-name"><%= foodName %><small> <%= brandName %></small>
 					</h4>
-					<%= unitCalories %> kCal per <%= servingUnit %>
+					<%= unitCalories %> kCal every <%= servingQty %> <%= servingUnit %>
 				</div>
 			</div>
 			<div class="panel-body nutrition-facts" style="display:none;">
@@ -194,7 +194,7 @@
 						<small> <%= brandName %></small>
 					</h4>
 					<div class="calories">
-						<b><%= totalCalories %> kCal</b> (<%= unitCalories %> kCal per <%= servingUnit %> × <span><%= servingQty %></span><input style="display: none;" type="text"> <%= servingUnit %>)
+						<b><%= totalCalories %> kCal</b> - <%= unitCalories %> kCal per serving (<%= servingQty %> <%= servingUnit %>), <span><%= servingNumber %></span><input style="display: none;" type="text"> serving(s)
 					</div>
 				</div>
 			</div>
