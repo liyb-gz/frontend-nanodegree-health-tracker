@@ -15,7 +15,12 @@ var app = app || {};
 		initialize: function (options) {
 			_.bindAll(this,
 				'render',
-				'getGraphPercentages'
+				'getGraphPercentages',
+				'edit',
+				'submit',
+				'cancel',
+				'endEdit',
+				'round'
 			);
 
 			options = options || {};
@@ -46,16 +51,16 @@ var app = app || {};
 
 			this.$caloriesBar
 				.width(graphPercentages.caloriesPercentage + '%')
-				.find('.quantity').html(this.recordedCollection.sumNutrition.sumCalories);
+				.find('.quantity').html(this.round(this.recordedCollection.sumNutrition.sumCalories));
 			this.$carboBar
 				.width(graphPercentages.carboPercentage + '%')
-				.find('.quantity').html(this.recordedCollection.sumNutrition.sumCarbo);
+				.find('.quantity').html(this.round(this.recordedCollection.sumNutrition.sumCarbo));
 			this.$fatBar
 				.width(graphPercentages.fatPercentage + '%')
-				.find('.quantity').html(this.recordedCollection.sumNutrition.sumFat);
+				.find('.quantity').html(this.round(this.recordedCollection.sumNutrition.sumFat));
 			this.$proteinBar
 				.width(graphPercentages.proteinPercentage + '%')
-				.find('.quantity').html(this.recordedCollection.sumNutrition.sumProtein);
+				.find('.quantity').html(this.round(this.recordedCollection.sumNutrition.sumProtein));
 		},
 
 		getGraphPercentages: function (hundredPercentLine) {
@@ -102,6 +107,10 @@ var app = app || {};
 			this.$editBtn.show();
 			this.$cancelBtn.hide();
 			this.$submitBtn.hide();
+		},
+
+		round: function (number) {
+			return Math.round(number * 100) / 100;
 		}
 	});
 
