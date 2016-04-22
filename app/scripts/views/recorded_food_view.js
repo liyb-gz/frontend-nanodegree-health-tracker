@@ -11,10 +11,11 @@ var app = app || {};
 		events: {
 			'click .btn-add': 'addToRecord',
 			'click .btn-detail': 'toggleDetails',
-			'click .btn-edit' : 'edit',
-			'click .btn-drop' : 'drop',
-			'click .btn-submit' : 'submit',
-			'click .btn-cancel' : 'cancel'
+			'click .btn-edit': 'edit',
+			'click .btn-drop': 'drop',
+			'click .btn-submit': 'submit',
+			'click .btn-cancel': 'cancel',
+			'keyup input': 'keyHandler'
 		},
 
 		initialize: function (options) {
@@ -27,7 +28,8 @@ var app = app || {};
 				'drop',
 				'submit',
 				'cancel',
-				'endEdit'
+				'endEdit',
+				'keyHandler'
 			);
 
 			this.nutritionGoals = options.nutritionGoals;
@@ -121,6 +123,14 @@ var app = app || {};
 			this.$('.food-name span').show();
 			this.$('.calories input').hide();
 			this.$('.calories span').show();
+		},
+
+		keyHandler: function (e) {
+			if (e.which !== ENTER_KEY) {
+				return;
+			} else {
+				this.submit();
+			}
 		}
 	});
 })(app);

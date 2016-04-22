@@ -9,7 +9,8 @@ var app = app || {};
 		events: {
 			'click .btn-edit': 'edit',
 			'click .btn-submit': 'submit',
-			'click .btn-cancel': 'cancel'
+			'click .btn-cancel': 'cancel',
+			'keyup input': 'keyHandler'
 		},
 
 		initialize: function (options) {
@@ -20,7 +21,8 @@ var app = app || {};
 				'submit',
 				'cancel',
 				'endEdit',
-				'round'
+				'round',
+				'keyHandler'
 			);
 
 			options = options || {};
@@ -111,6 +113,14 @@ var app = app || {};
 
 		round: function (number) {
 			return Math.round(number * 100) / 100;
+		},
+
+		keyHandler: function (e) {
+			if (e.which !== ENTER_KEY) {
+				return;
+			} else {
+				this.submit();
+			}
 		}
 	});
 
