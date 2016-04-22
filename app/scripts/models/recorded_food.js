@@ -26,10 +26,17 @@ app.RecordedFood = app.SearchedFood.extend({
 	},
 
 	recalculateNutrition: function () {
-		this.set('totalCalories', (this.get('unitCalories') * this.get('servingQty')).toFixed(0));
-		this.set('totalCarbo', (this.get('unitCarbo') * this.get('servingQty')).toFixed(1));
-		this.set('totalFat', (this.get('unitFat') * this.get('servingQty')).toFixed(1));
-		this.set('totalProtein', (this.get('unitProtein') * this.get('servingQty')).toFixed(1));
+		this.set('totalCalories', this.round(this.get('unitCalories') * this.get('servingQty')));
+		this.set('totalCarbo', this.round(this.get('unitCarbo') * this.get('servingQty')));
+		this.set('totalFat', this.round(this.get('unitFat') * this.get('servingQty')));
+		this.set('totalProtein', this.round(this.get('unitProtein') * this.get('servingQty')));
+	},
+
+	// Utility function
+	// Takes in a number
+	// returns an interger or a float rounded up to 2 decimals
+	round: function (number) {
+		return Math.round(number * 100) / 100;
 	}
 });
 

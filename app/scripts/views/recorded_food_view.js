@@ -51,6 +51,7 @@ app.RecordedFoodView = Backbone.View.extend({
 
 		// Toggle the input boxes
 		this.$('.food-name input').show('fast').val(this.model.get('foodName'));
+		console.log(this.model);
 		this.$('.food-name span').hide('fast');
 		this.$('.calories input').show('fast').val(this.model.get('servingQty'));
 		this.$('.calories span').hide('fast');
@@ -65,11 +66,15 @@ app.RecordedFoodView = Backbone.View.extend({
 	},
 
 	submit: function () {
-		console.log((this.$('.calories input').val());
-		console.log((this.$('.calories input').val().trim());
+		console.log(this.model);
+		console.log(this.$('.calories input').val());
+		console.log(this.$('.calories input').val().trim());
 		console.log(parseFloat(this.$('.calories input').val().trim()));
-		this.model.set('foodName', this.$('.food-name input').val().trim());
-		this.model.set('servingQty', parseFloat(this.$('.calories input').val()));
+		this.model.set({
+			foodName: this.$('.food-name input').val().trim(),
+			servingQty: parseFloat(this.$('.calories input').val())
+		});
+		console.log(this.model);
 		this.endEdit();
 	},
 
