@@ -28,10 +28,12 @@ var app = app || {};
 		},
 
 		recalculateNutrition: function () {
-			this.set('totalCalories', this.round(this.get('unitCalories') * this.get('servingQty')));
-			this.set('totalCarbo', this.round(this.get('unitCarbo') * this.get('servingQty')));
-			this.set('totalFat', this.round(this.get('unitFat') * this.get('servingQty')));
-			this.set('totalProtein', this.round(this.get('unitProtein') * this.get('servingQty')));
+			this.set({
+				totalCalories: this.round(this.get('unitCalories') * this.get('servingQty')),
+				totalCarbo: this.round(this.get('unitCarbo') * this.get('servingQty')),
+				totalFat: this.round(this.get('unitFat') * this.get('servingQty')),
+				totalProtein: this.round(this.get('unitProtein') * this.get('servingQty'))
+			});
 		},
 
 		// Utility function

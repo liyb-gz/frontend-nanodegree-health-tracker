@@ -62,10 +62,10 @@
 												<div class="col-sm-3">Calories</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-primary" style="width: 50%; ">
-															<span class="center">200 kCal</span>
+														<div class="progress-bar progress-bar-primary" style="width: 0%; ">
+															<span class="center"><span class="quantity"></span> kCal</span>
 														</div>
-														<div class="bar-step" style="left: 75%">
+														<div class="bar-step" style="padding-left: 80%">
 															<div class="label-line"></div>
 														</div>
 													</div>
@@ -81,10 +81,10 @@
 												<div class="col-sm-3">Carbohydrates</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-info" style="width: 10%; ">
-															<span class="center">20 g</span>
+														<div class="progress-bar progress-bar-info" style="width: 0%; ">
+															<span class="center"><span class="quantity"></span> g</span>
 														</div>
-														<div class="bar-step" style="left: 75%">
+														<div class="bar-step" style="padding-left: 80%">
 															<div class="label-line"></div>
 														</div>
 													</div>
@@ -94,23 +94,23 @@
 												<div class="col-sm-3">Fat</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-warning" style="width: 50%; ">
-															<span class="center">30 g</span>
+														<div class="progress-bar progress-bar-warning" style="width: 0%; ">
+															<span class="center"><span class="quantity"></span> g</span>
 														</div>
-														<div class="bar-step" style="left: 75%">
+														<div class="bar-step" style="padding-left: 80%">
 															<div class="label-line"></div>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="row protain">
-												<div class="col-sm-3">Protain</div>
+											<div class="row protein">
+												<div class="col-sm-3">Protein</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-success" style="width: 30%; ">
-															<span class="center">15 g</span>
+														<div class="progress-bar progress-bar-success" style="width: 0%; ">
+															<span class="center"><span class="quantity"></span> g</span>
 														</div>
-														<div class="bar-step" style="left: 75%">
+														<div class="bar-step" style="padding-left: 80%">
 															<div class="label-line"></div>
 														</div>
 													</div>
@@ -151,7 +151,7 @@
 				<hr>
 				Fat <span class="pull-right"><%= unitFat %> g</span>
 				<hr>
-				Protain <span class="pull-right"><%= unitProtein %> g</span>
+				Protein <span class="pull-right"><%= unitProtein %> g</span>
 			</div>
 		</script>
 
@@ -203,8 +203,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="row protain">
-					<div class="col-sm-3">Protain</div>
+				<div class="row protein">
+					<div class="col-sm-3">Protein</div>
 					<div class="col-sm-9">
 						<div class="progress">
 							<div class="progress-bar progress-bar-success" style="width: <%= proteinPercentage %>%; ">

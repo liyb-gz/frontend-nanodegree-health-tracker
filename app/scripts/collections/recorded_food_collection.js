@@ -39,6 +39,7 @@ var app = app || {};
 			});
 
 			this.sumNutrition = newSumNutrition;
+			this.trigger('updateSum');
 		}
 	});
 

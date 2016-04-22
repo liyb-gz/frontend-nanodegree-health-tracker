@@ -14,7 +14,6 @@ var app = app || {};
 			this.nutritionGoals = app.nutritionGoals;
 
 			this.listenTo(this.collection, 'add', this.addOne);
-			this.listenTo(this.collection, 'change', this.change);
 
 			this.render();
 		},
@@ -32,10 +31,6 @@ var app = app || {};
 			});
 
 			this.$el.append(newView.render().el);
-		},
-
-		change: function () {
-			console.log('change');
 		},
 	});
 
