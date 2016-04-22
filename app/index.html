@@ -62,7 +62,7 @@
 												<div class="col-sm-3">Calories</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%; min-width: 10%;">
+														<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; ">
 															<span class="center">200 kCal</span>
 														</div>
 														<div class="bar-step" style="left: 75%">
@@ -81,7 +81,7 @@
 												<div class="col-sm-3">Carbohydrates</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%; min-width: 10%;">
+														<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%; ">
 															<span class="center">20 g</span>
 														</div>
 														<div class="bar-step" style="left: 75%">
@@ -94,7 +94,7 @@
 												<div class="col-sm-3">Fat</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; min-width: 10%;">
+														<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; ">
 															<span class="center">30 g</span>
 														</div>
 														<div class="bar-step" style="left: 75%">
@@ -107,7 +107,7 @@
 												<div class="col-sm-3">Protain</div>
 												<div class="col-sm-9">
 													<div class="progress">
-														<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; min-width: 10%;">
+														<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; ">
 															<span class="center">15 g</span>
 														</div>
 														<div class="bar-step" style="left: 75%">
@@ -141,7 +141,7 @@
 													<div class="col-sm-3">Carbohydrates</div>
 													<div class="col-sm-9">
 														<div class="progress">
-															<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%; min-width: 10%;">
+															<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%; ">
 																20 g
 														  </div>
 														</div>
@@ -151,7 +151,7 @@
 													<div class="col-sm-3">Fat</div>
 													<div class="col-sm-9">
 														<div class="progress">
-															<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; min-width: 10%;">
+															<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%; ">
 																30 g
 														  </div>
 														</div>
@@ -161,7 +161,7 @@
 													<div class="col-sm-3">Protain</div>
 													<div class="col-sm-9">
 														<div class="progress">
-															<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; min-width: 10%;">
+															<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 30%; ">
 																15 g
 														  </div>
 														</div>
@@ -245,7 +245,7 @@
 					<div class="col-sm-3">Carbohydrates</div>
 					<div class="col-sm-9">
 						<div class="progress">
-							<div class="progress-bar progress-bar-info" style="width: 10%; min-width: 85%;">
+							<div class="progress-bar progress-bar-info" style="width: 85%;">
 								<span class="center"><%= totalCarbo %> g</span>
 							</div>
 							<div class="bar-step" style="left: 75%">
@@ -258,7 +258,7 @@
 					<div class="col-sm-3">Fat</div>
 					<div class="col-sm-9">
 						<div class="progress">
-							<div class="progress-bar progress-bar-warning" style="width: 50%; min-width: 10%;">
+							<div class="progress-bar progress-bar-warning" style="width: 50%; ">
 								<span class="center"><%= totalFat %> g</span>
 							</div>
 							<div class="bar-step" style="left: 75%">
@@ -271,7 +271,7 @@
 					<div class="col-sm-3">Protain</div>
 					<div class="col-sm-9">
 						<div class="progress">
-							<div class="progress-bar progress-bar-success" style="width: 30%; min-width: 10%;">
+							<div class="progress-bar progress-bar-success" style="width: 30%; ">
 								<span class="center"><%= totalProtein %> g</span>
 							</div>
 							<div class="bar-step" style="left: 75%">
@@ -310,6 +310,7 @@
 		<!-- build:js scripts/main.js -->
 		<script src="scripts/models/searched_food.js"></script>
 		<script src="scripts/models/recorded_food.js"></script>
+		<script src="scripts/models/nutrition_goals.js"></script>
 		<script src="scripts/collections/searched_food_collection.js"></script>
 		<script src="scripts/collections/recorded_food_collection.js"></script>
 		<script src="scripts/views/searched_food_view.js"></script>
