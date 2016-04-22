@@ -67,7 +67,6 @@ var app = app || {};
 		},
 
 		toggleDetails: function () {
-			console.log('toggleDetails');
 			this.showingDetails = !this.showingDetails;
 			this.$('.nutrition-facts').toggle('fast');
 			this.$('.btn-detail')

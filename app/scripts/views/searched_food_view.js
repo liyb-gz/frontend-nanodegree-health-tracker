@@ -27,7 +27,7 @@ var app = app || {};
 		},
 
 		addToRecord: function () {
-			console.log('add to record');
+			app.recordedCollection.add(new app.RecordedFood(this.model.attributes));
 		},
 
 		toggleDetails: function () {

@@ -7,26 +7,36 @@ var app = app || {};
 
 		initialize: function () {
 			_.bindAll(this,
-				'render'
+				'render',
+				'addOne'
 			);
 
+			this.nutritionGoals = app.nutritionGoals;
+
+			this.listenTo(this.collection, 'add', this.addOne);
+			this.listenTo(this.collection, 'change', this.change);
+
 			this.render();
-			console.log('init');
 		},
 
 		render: function () {
-			console.log('render');
+			this.collection.each(this.addOne);
+		},
+
+		addOne: function (model) {
 			var self = this;
 
-			this.collection.each(function (model) {
-				var newView = new app.RecordedFoodView({
-					model: model,
-					nutritionGoals: app.nutritionGoals
-				});
-
-				self.$el.append(newView.render().el);
+			var newView = new app.RecordedFoodView({
+				model: model,
+				nutritionGoals : self.nutritionGoals
 			});
-		}
+
+			this.$el.append(newView.render().el);
+		},
+
+		change: function () {
+			console.log('change');
+		},
 	});
 
 	app.recordedCollectionView = new app.RecordedCollectionView({

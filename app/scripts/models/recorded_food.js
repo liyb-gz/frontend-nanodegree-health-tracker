@@ -56,4 +56,16 @@ var testingSearchedFood = new app.SearchedFood({
 	servingUnit: 'patty'
 });
 
+var testingSearchedFood2 = new app.SearchedFood({
+	foodName: 'Chicken Burger',
+	brandName: 'KFC',
+	unitCalories: 320,
+	unitCarbo: 30,
+	unitFat: 18,
+	unitProtein: 14,
+	servingQty: 1,
+	servingUnit: 'burger'
+});
+
 var testingRecordedFood = new app.RecordedFood(testingSearchedFood.attributes);
+var testingRecordedFood2 = new app.RecordedFood(testingSearchedFood2.attributes);
