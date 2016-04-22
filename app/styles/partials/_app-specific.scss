@@ -24,6 +24,12 @@ $record-items-exclude-height: 407px;
 	}
 }
 
+.stats {
+	.input-group {
+			margin-bottom: 6px;
+	}
+}
+
 .food-list {
 	@media screen and (min-width: 768px) {
 		max-height: calc(100vh - #{$record-items-exclude-height}); // TODO: use Javascipt to decide the height

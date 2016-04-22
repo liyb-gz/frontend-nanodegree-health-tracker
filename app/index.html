@@ -54,7 +54,11 @@
 								<div class="panel panel-default">
 									<div class="panel-body">
 										<h3 class="title">My Nutritions Today
-											<small><button class="btn btn-xs btn-link pull-right edit-goals">Edit Goals</button></small>
+											<div class="btn-group pull-right">
+												<button class="btn btn-success btn-xs btn-submit" style="display: none;"><span class="glyphicon glyphicon-ok"></span></button>
+												<button class="btn btn-default btn-xs btn-edit"><span class="glyphicon glyphicon-pencil"></span></button>
+												<button class="btn btn-danger btn-xs btn-cancel" style="display: none;"><span class="glyphicon glyphicon-remove"></span></button>
+											</div>
 										</h3>
 										<hr>
 										<div class="nutrition-facts">
@@ -69,8 +73,8 @@
 															<div class="label-line"></div>
 														</div>
 													</div>
-													<form>
-														<div class="input-group goal-edit hidden">
+													<form class="goals-edit" style="display: none;">
+														<div class="input-group">
 															<input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
 															<div class="input-group-addon">kCal</div>
 														</div>
@@ -88,6 +92,12 @@
 															<div class="label-line"></div>
 														</div>
 													</div>
+													<form class="goals-edit" style="display: none;">
+														<div class="input-group">
+															<input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+															<div class="input-group-addon">g</div>
+														</div>
+													</form>
 												</div>
 											</div>
 											<div class="row fat">
@@ -101,6 +111,12 @@
 															<div class="label-line"></div>
 														</div>
 													</div>
+													<form class="goals-edit" style="display: none;">
+														<div class="input-group">
+															<input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+															<div class="input-group-addon">g</div>
+														</div>
+													</form>
 												</div>
 											</div>
 											<div class="row protein">
@@ -114,6 +130,12 @@
 															<div class="label-line"></div>
 														</div>
 													</div>
+													<form class="goals-edit" style="display: none;">
+														<div class="input-group">
+															<input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+															<div class="input-group-addon">g</div>
+														</div>
+													</form>
 												</div>
 											</div>
 										</div>
