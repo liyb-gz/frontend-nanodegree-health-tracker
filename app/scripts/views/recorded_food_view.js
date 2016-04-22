@@ -17,15 +17,23 @@ var app = app || {};
 			'click .btn-cancel' : 'cancel'
 		},
 
-		initialize: function () {
+		initialize: function (options) {
 			_.bindAll(this,
 				'render',
+				'getRenderParams',
 				'toggleDetails',
 				'edit',
 				'drop',
 				'submit',
-				'cancel'
+				'cancel',
+				'endEdit'
 			);
+
+			this.nutritionGoals = options.nutritionGoals;
+
+			// Status markers
+			this.editing = false;
+			this.showingDetails = false;
 
 			this.listenTo(this.model, 'destroy', this.remove);
 			this.listenTo(this.model, 'change', this.render);
@@ -34,11 +42,21 @@ var app = app || {};
 		},
 
 		render: function () {
-			this.$el.html(this.template(this.model.attributes));
+			console.log('render');
+			this.$el.html(this.template(this.getRenderParams()));
 			return this;
 		},
 
+		getRenderParams: function () {
+			var params = _.extend({},
+				this.model.attributes,
+				{showingDetails: this.showingDetails});
+			return params;
+		},
+
 		toggleDetails: function () {
+			console.log('toggleDetails');
+			this.showingDetails = !this.showingDetails;
 			this.$('.nutrition-facts').toggle('fast');
 			this.$('.btn-detail')
 				.find('.glyphicon')
@@ -46,6 +64,9 @@ var app = app || {};
 		},
 
 		edit: function () {
+			// Mark status
+			this.editing = true;
+
 			// Toggle the buttons
 			this.$('.btn-submit, .btn-cancel').show('fast');
 			this.$('.btn-drop, .btn-edit').hide('fast');
@@ -77,6 +98,9 @@ var app = app || {};
 		},
 
 		endEdit: function () {
+			// Mark status
+			this.editing = false;
+
 			// Toggle the buttons
 			this.$('.btn-submit, .btn-cancel').hide('fast');
 			this.$('.btn-drop, .btn-edit').show('fast');
@@ -95,5 +119,6 @@ var app = app || {};
 
 var testingRecordedFoodView = new app.RecordedFoodView({
 	model: testingRecordedFood,
+	nutritionGoals: app.nutritionGoals,
 	el: '#testing-food-view'
 });
