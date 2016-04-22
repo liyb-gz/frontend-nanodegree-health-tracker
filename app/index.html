@@ -55,9 +55,9 @@
 									<div class="panel-body">
 										<h3 class="title">My Nutritions Today
 											<div class="btn-group pull-right">
-												<button class="btn btn-success btn-xs btn-submit" style="display: none;"><span class="glyphicon glyphicon-ok"></span></button>
-												<button class="btn btn-default btn-xs btn-edit"><span class="glyphicon glyphicon-pencil"></span></button>
-												<button class="btn btn-danger btn-xs btn-cancel" style="display: none;"><span class="glyphicon glyphicon-remove"></span></button>
+												<button class="btn btn-success btn-xs btn-submit" style="display: none;" title="Save"><span class="glyphicon glyphicon-ok"></span></button>
+												<button class="btn btn-default btn-xs btn-edit"><span class="glyphicon glyphicon-pencil" title="Edit my nutrition goals"></span></button>
+												<button class="btn btn-danger btn-xs btn-cancel" style="display: none;" title="Cancel"><span class="glyphicon glyphicon-remove"></span></button>
 											</div>
 										</h3>
 										<hr>
@@ -159,8 +159,8 @@
 		<script type="text/template" id="searched-food-item-template">
 			<div class="panel-body">
 				<div class="btn-group pull-right">
-					<button class="btn btn-default btn-xs btn-detail"><span class="glyphicon glyphicon-resize-full"></span></button>
-					<button class="btn btn-default btn-xs btn-add"><span class="glyphicon glyphicon-plus"></span></button>
+					<button class="btn btn-default btn-xs btn-detail" title="Show / hide details"><span class="glyphicon glyphicon-resize-full"></span></button>
+					<button class="btn btn-default btn-xs btn-add" title="Add to my food records"><span class="glyphicon glyphicon-plus"></span></button>
 				</div>
 				<div class="food-abstract pull-left">
 					<h4 class="food-name"><%= foodName %><small> <%= brandName %></small>
@@ -181,11 +181,11 @@
 		<script type="text/template" id="recorded-food-item-template">
 			<div class="panel-body">
 				<div class="btn-group pull-right">
-					<button class="btn btn-default btn-xs btn-detail"><span class="glyphicon glyphicon-resize-full"></span></button>
-					<button class="btn btn-default btn-xs btn-edit"><span class="glyphicon glyphicon-pencil"></span></button>
-					<button class="btn btn-default btn-xs btn-drop"><span class="glyphicon glyphicon-minus"></span></button>
-					<button class="btn btn-success btn-xs btn-submit" style="display: none;"><span class="glyphicon glyphicon-ok"></span></button>
-					<button class="btn btn-danger btn-xs btn-cancel" style="display: none;"><span class="glyphicon glyphicon-remove"></span></button>
+					<button class="btn btn-default btn-xs btn-detail" title="Show / hide details"><span class="glyphicon glyphicon-resize-full"></span></button>
+					<button class="btn btn-default btn-xs btn-edit" title="Edit this record"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button class="btn btn-default btn-xs btn-drop" title="Delete this record"><span class="glyphicon glyphicon-minus"></span></button>
+					<button class="btn btn-success btn-xs btn-submit" title="Save" style="display: none;"><span class="glyphicon glyphicon-ok"></span></button>
+					<button class="btn btn-danger btn-xs btn-cancel" title="Cancel" style="display: none;"><span class="glyphicon glyphicon-remove"></span></button>
 				</div>
 				<div class="food-abstract pull-left">
 					<h4 class="food-name">
