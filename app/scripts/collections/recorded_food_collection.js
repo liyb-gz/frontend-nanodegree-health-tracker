@@ -5,6 +5,7 @@ var app = app || {};
 	'use strict';
 	app.RecordedCollection = Backbone.Collection.extend({
 		model: app.RecordedFood,
+		localStorage: new Backbone.LocalStorage('foodRecords'),
 
 		initialize: function () {
 			_.bindAll(this, 'updateSumNutrition');
