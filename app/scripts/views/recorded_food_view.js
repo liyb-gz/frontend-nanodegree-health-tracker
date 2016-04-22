@@ -46,15 +46,12 @@ var app = app || {};
 		},
 
 		edit: function () {
-			console.log('edit');
-
 			// Toggle the buttons
 			this.$('.btn-submit, .btn-cancel').show('fast');
 			this.$('.btn-drop, .btn-edit').hide('fast');
 
 			// Toggle the input boxes
 			this.$('.food-name input').show('fast').val(this.model.get('foodName'));
-			console.log(this.model);
 			this.$('.food-name span').hide('fast');
 			this.$('.calories input').show('fast').val(this.model.get('servingQty'));
 			this.$('.calories span').hide('fast');
@@ -64,20 +61,14 @@ var app = app || {};
 		},
 
 		drop: function () {
-			console.log('drop');
 			this.model.destroy();
 		},
 
 		submit: function () {
-			console.log(this.model);
-			console.log(this.$('.calories input').val());
-			console.log(this.$('.calories input').val().trim());
-			console.log(parseFloat(this.$('.calories input').val().trim()));
 			this.model.set({
 				foodName: this.$('.food-name input').val().trim(),
 				servingQty: parseFloat(this.$('.calories input').val())
 			});
-			console.log(this.model);
 			this.endEdit();
 		},
 
@@ -86,8 +77,6 @@ var app = app || {};
 		},
 
 		endEdit: function () {
-			console.log('endEdit');
-
 			// Toggle the buttons
 			this.$('.btn-submit, .btn-cancel').hide('fast');
 			this.$('.btn-drop, .btn-edit').show('fast');

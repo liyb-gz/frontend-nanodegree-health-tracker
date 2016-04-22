@@ -1,8 +1,8 @@
-node_modules
-dist
 .tmp
-.sass-cache
+node_modules
 bower_components
+dist
+images_src
+.sass-cache
 test/bower_components
 app/archive
-images_src
