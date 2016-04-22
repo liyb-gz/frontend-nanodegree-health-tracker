@@ -229,7 +229,7 @@ var ENTER_KEY = 13;
 			}).fail(function (jqXHR, textStatus) {
 				// If the error is caused by our abortion, then don't worry about it
 				if (textStatus !== 'abort') {
-					console.log('Search result failed to load.');
+					alert('Search result failed to load.');
 					self.setTotal(0);
 				}
 			}).always(function () {
