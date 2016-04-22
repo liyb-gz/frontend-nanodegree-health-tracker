@@ -1,7 +1,11 @@
+/* globals Backbone */
 var app = app || {};
 
-app.RecordedCollection = Backbone.Collection.extend({
-	model: app.RecordedFood
-});
+(function (app) {
+	'use strict';
+	app.RecordedCollection = Backbone.Collection.extend({
+		model: app.RecordedFood
+	});
 
-app.recordedCollection = new app.RecordedCollection();
+	app.recordedCollection = new app.RecordedCollection();
+})(app);

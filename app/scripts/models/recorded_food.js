@@ -1,44 +1,47 @@
-/*globals Backbone*/
+/*globals _*/
 var app = app || {};
 
-app.RecordedFood = app.SearchedFood.extend({
-	defaults: _.extend({}, app.SearchedFood.prototype.defaults, {
-		totalCalories: 0,
-		totalCarbo: 0,
-		totalFat: 0,
-		totalProtein: 0
-	}),
+(function (app) {
+	'use strict';
+	app.RecordedFood = app.SearchedFood.extend({
+		defaults: _.extend({}, app.SearchedFood.prototype.defaults, {
+			totalCalories: 0,
+			totalCarbo: 0,
+			totalFat: 0,
+			totalProtein: 0
+		}),
 
-	initialize: function () {
-		_.bindAll(this,
-			'changeServing',
-			'recalculateNutrition'
-		);
+		initialize: function () {
+			_.bindAll(this,
+				'changeServing',
+				'recalculateNutrition'
+			);
 
-		//It can be simple on('change'), but I think being more specific is good.
-		this.on('change:servingQty', this.changeServing);
+			//It can be simple on('change'), but I think being more specific is good.
+			this.on('change:servingQty', this.changeServing);
 
-		this.recalculateNutrition();
-	},
+			this.recalculateNutrition();
+		},
 
-	changeServing: function () {
-		this.recalculateNutrition();
-	},
+		changeServing: function () {
+			this.recalculateNutrition();
+		},
 
-	recalculateNutrition: function () {
-		this.set('totalCalories', this.round(this.get('unitCalories') * this.get('servingQty')));
-		this.set('totalCarbo', this.round(this.get('unitCarbo') * this.get('servingQty')));
-		this.set('totalFat', this.round(this.get('unitFat') * this.get('servingQty')));
-		this.set('totalProtein', this.round(this.get('unitProtein') * this.get('servingQty')));
-	},
+		recalculateNutrition: function () {
+			this.set('totalCalories', this.round(this.get('unitCalories') * this.get('servingQty')));
+			this.set('totalCarbo', this.round(this.get('unitCarbo') * this.get('servingQty')));
+			this.set('totalFat', this.round(this.get('unitFat') * this.get('servingQty')));
+			this.set('totalProtein', this.round(this.get('unitProtein') * this.get('servingQty')));
+		},
 
-	// Utility function
-	// Takes in a number
-	// returns an interger or a float rounded up to 2 decimals
-	round: function (number) {
-		return Math.round(number * 100) / 100;
-	}
-});
+		// Utility function
+		// Takes in a number
+		// returns an interger or a float rounded up to 2 decimals
+		round: function (number) {
+			return Math.round(number * 100) / 100;
+		}
+	});
+})(app);
 
 // TODO: delete testing var
 
