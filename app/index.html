@@ -24,7 +24,7 @@
 
 		<div class="jumbotron jumbotron-food">
 			<div class="row">
-				<div class="col-md-6 search">
+				<div class="col-sm-6 search">
 					<form class="search-form">
 						<input type="text" class="form-control" placeholder="Search for your food!">
 					</form>
@@ -34,10 +34,10 @@
 							<small class="search-results-number" style="display:none;">(<span class="number">1000</span> results found)</small>
 						</h3>
 						<div class="row">
-							<div class="col-md-12 loading" style="display:none;">
+							<div class="col-sm-12 loading" style="display:none;">
 								<span class="glyphicon glyphicon-refresh animate" aria-hidden="true"></span> Loading...
 							</div>
-							<div class="col-md-12 search-results-items">
+							<div class="col-sm-12 search-results-items">
 								<span class="no-result" style="display:none;">Sorry, no result found.</span>
 								<button class="btn btn-default btn-block btn-loadmore" style="display:none;">
 									<span class="done">Load more...</span>
@@ -47,10 +47,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-sm-6">
 					<div class="well well-transparent my-foods">
 						<div class="row">
-							<div class="col-md-12 stats">
+							<div class="col-sm-12 stats">
 								<div class="panel panel-default">
 									<div class="panel-body">
 										<h3 class="title">My Nutritions Today
@@ -120,9 +120,9 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-12 food-list">
+							<div class="col-sm-12 food-list">
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-sm-12">
 										<div class="panel panel-default food-item">
 											<div class="panel-body">
 												<div class="btn-group pull-right">
@@ -182,9 +182,9 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-12 food-list">
+							<div class="col-sm-12 food-list">
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-sm-12">
 										<div class="panel panel-default food-item" id="testing-food-view">
 										</div>
 									</div>
@@ -245,10 +245,10 @@
 					<div class="col-sm-3">Carbohydrates</div>
 					<div class="col-sm-9">
 						<div class="progress">
-							<div class="progress-bar progress-bar-info" style="width: 85%;">
+							<div class="progress-bar progress-bar-info" style="width: <%= carboPercentage %>%;">
 								<span class="center"><%= totalCarbo %> g</span>
 							</div>
-							<div class="bar-step" style="left: 75%">
+							<div class="bar-step" style="padding-left: <%= hundredPercentLine %>%">
 								<div class="label-line"></div>
 							</div>
 						</div>
@@ -258,10 +258,10 @@
 					<div class="col-sm-3">Fat</div>
 					<div class="col-sm-9">
 						<div class="progress">
-							<div class="progress-bar progress-bar-warning" style="width: 50%; ">
+							<div class="progress-bar progress-bar-warning" style="width: <%= fatPercentage %>%; ">
 								<span class="center"><%= totalFat %> g</span>
 							</div>
-							<div class="bar-step" style="left: 75%">
+							<div class="bar-step" style="padding-left: <%= hundredPercentLine %>%">
 								<div class="label-line"></div>
 							</div>
 						</div>
@@ -271,10 +271,10 @@
 					<div class="col-sm-3">Protain</div>
 					<div class="col-sm-9">
 						<div class="progress">
-							<div class="progress-bar progress-bar-success" style="width: 30%; ">
+							<div class="progress-bar progress-bar-success" style="width: <%= proteinPercentage %>%; ">
 								<span class="center"><%= totalProtein %> g</span>
 							</div>
-							<div class="bar-step" style="left: 75%">
+							<div class="bar-step" style="padding-left: <%= hundredPercentLine %>%">
 								<div class="label-line"></div>
 							</div
 						</div>

@@ -21,6 +21,7 @@ var app = app || {};
 			_.bindAll(this,
 				'render',
 				'getRenderParams',
+				'getGraphPercentages',
 				'toggleDetails',
 				'edit',
 				'drop',
@@ -30,6 +31,7 @@ var app = app || {};
 			);
 
 			this.nutritionGoals = options.nutritionGoals;
+			this.hundredPercentLine = options.hundredPercentLine || 80; // 100% line position, default: 80%
 
 			// Status markers
 			this.editing = false;
@@ -37,6 +39,7 @@ var app = app || {};
 
 			this.listenTo(this.model, 'destroy', this.remove);
 			this.listenTo(this.model, 'change', this.render);
+			this.listenTo(this.nutritionGoals, 'change', this.render);
 
 			this.render();
 		},
@@ -50,8 +53,18 @@ var app = app || {};
 		getRenderParams: function () {
 			var params = _.extend({},
 				this.model.attributes,
-				{showingDetails: this.showingDetails});
+				{showingDetails: this.showingDetails},
+				this.getGraphPercentages(this.hundredPercentLine));
 			return params;
+		},
+
+		getGraphPercentages: function (hundredPercentLine) {
+			return {
+				hundredPercentLine: hundredPercentLine,
+				carboPercentage: this.model.get('totalCarbo') / this.nutritionGoals.get('carbo') * hundredPercentLine,
+				fatPercentage: this.model.get('totalFat') / this.nutritionGoals.get('fat') * hundredPercentLine,
+				proteinPercentage: this.model.get('totalProtein') / this.nutritionGoals.get('protein') * hundredPercentLine
+			};
 		},
 
 		toggleDetails: function () {
@@ -68,14 +81,14 @@ var app = app || {};
 			this.editing = true;
 
 			// Toggle the buttons
-			this.$('.btn-submit, .btn-cancel').show('fast');
-			this.$('.btn-drop, .btn-edit').hide('fast');
+			this.$('.btn-submit, .btn-cancel').show();
+			this.$('.btn-drop, .btn-edit').hide();
 
 			// Toggle the input boxes
-			this.$('.food-name input').show('fast').val(this.model.get('foodName'));
-			this.$('.food-name span').hide('fast');
-			this.$('.calories input').show('fast').val(this.model.get('servingQty'));
-			this.$('.calories span').hide('fast');
+			this.$('.food-name input').show().val(this.model.get('foodName'));
+			this.$('.food-name span').hide();
+			this.$('.calories input').show().val(this.model.get('servingQty'));
+			this.$('.calories span').hide();
 
 			// Focus edit
 			this.$('input').first().focus();
@@ -102,14 +115,14 @@ var app = app || {};
 			this.editing = false;
 
 			// Toggle the buttons
-			this.$('.btn-submit, .btn-cancel').hide('fast');
-			this.$('.btn-drop, .btn-edit').show('fast');
+			this.$('.btn-submit, .btn-cancel').hide();
+			this.$('.btn-drop, .btn-edit').show();
 
 			// Toggle the input boxes
-			this.$('.food-name input').hide('fast');
-			this.$('.food-name span').show('fast');
-			this.$('.calories input').hide('fast');
-			this.$('.calories span').show('fast');
+			this.$('.food-name input').hide();
+			this.$('.food-name span').show();
+			this.$('.calories input').hide();
+			this.$('.calories span').show();
 		}
 	});
 })(app);

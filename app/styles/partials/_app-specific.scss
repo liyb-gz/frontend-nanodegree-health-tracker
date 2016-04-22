@@ -1,3 +1,6 @@
+$search-results-items-exclude-height: 246px; // Heights of all other elements, paddings and margins
+$record-items-exclude-height: 246px;
+
 .jumbotron-food {
 	background: url('../images/food.jpg') center center / cover no-repeat;
 }
@@ -16,14 +19,14 @@
 
 .search-results-items {
 	@media screen and (min-width: 768px) {
-		max-height: calc(100vh - 246px);
+		max-height: calc(100vh - #{$search-results-items-exclude-height});
 		overflow-y: auto;
 	}
 }
 
 .food-list {
 	@media screen and (min-width: 768px) {
-		max-height: calc(100vh - 246px); // TODO: use Javascipt to decide the height
+		max-height: calc(100vh - #{$record-items-exclude-height}); // TODO: use Javascipt to decide the height
 		overflow-y: auto;
 	}
 }
@@ -75,7 +78,7 @@
 		background: lightgray;
 		height: $line-height-computed;
 		width: 1px;
-		margin-left: 5px;
+		margin-left: 0;
 	}
 
 	.label-percent {
