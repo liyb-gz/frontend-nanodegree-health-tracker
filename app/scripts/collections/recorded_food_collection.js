@@ -9,3 +9,6 @@ var app = app || {};
 
 	app.recordedCollection = new app.RecordedCollection();
 })(app);
+
+// TODO: delete this testing var
+app.recordedCollection.add(testingRecordedFood);

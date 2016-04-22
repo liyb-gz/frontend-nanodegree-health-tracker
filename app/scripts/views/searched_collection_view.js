@@ -1,7 +1,6 @@
 /* globals Backbone, _, console, $*/
 
 var app = app || {};
-var ENTER_KEY = 13;
 
 (function (app) {
 	'use strict';
@@ -55,9 +54,9 @@ var ENTER_KEY = 13;
 			this.listenTo(this.collection, 'add', this.addOne);
 
 			// Load initial items, if any
-			this.collection.each(function (item) {
+			this.collection.each(function (model) {
 				var newView = new app.SearchedFoodView({
-					model: item
+					model: model
 				});
 				this.$list.append(newView.render().el);
 			}, this);

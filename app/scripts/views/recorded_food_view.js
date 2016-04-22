@@ -4,8 +4,8 @@ var app = app || {};
 (function (app) {
 	'use strict';
 	app.RecordedFoodView = Backbone.View.extend({
-		// tagName: 'div',
-		// className: 'panel panel-default food-item',
+		tagName: 'div',
+		className: 'panel panel-default food-item',
 		template: _.template($('#recorded-food-item-template').html()),
 
 		events: {
@@ -45,7 +45,6 @@ var app = app || {};
 		},
 
 		render: function () {
-			console.log('render');
 			this.$el.html(this.template(this.getRenderParams()));
 			return this;
 		},
@@ -126,12 +125,3 @@ var app = app || {};
 		}
 	});
 })(app);
-
-
-// TODO: delete this testing var
-
-var testingRecordedFoodView = new app.RecordedFoodView({
-	model: testingRecordedFood,
-	nutritionGoals: app.nutritionGoals,
-	el: '#testing-food-view'
-});
