@@ -42,14 +42,13 @@ var app = app || {};
 			this.listenTo(this.recordedCollection, 'updateSum', this.render);
 			this.listenTo(this.model, 'change', this.render);
 
-			console.log('NutritionGoalsView');
 			this.$('.bar-step').attr('style', 'padding-left: ' + this.hundredPercentLine + '%');
+			this.model.fetch();
 			this.render();
 		},
 
 		render: function () {
 			var graphPercentages = this.getGraphPercentages(this.hundredPercentLine);
-			console.log(graphPercentages);
 
 			this.$caloriesBar
 				.width(graphPercentages.caloriesPercentage + '%')
@@ -89,7 +88,7 @@ var app = app || {};
 		},
 
 		submit: function () {
-			this.model.set({
+			this.model.save({
 				calories: this.$('.calories input').val().trim(),
 				carbo: this.$('.carbo input').val().trim(),
 				fat: this.$('.fat input').val().trim(),
@@ -128,3 +127,4 @@ var app = app || {};
 		model: app.nutritionGoals
 	});
 })(app);
+
