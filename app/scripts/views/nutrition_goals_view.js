@@ -10,7 +10,7 @@ var app = app || {};
 			'click .btn-edit': 'edit',
 			'click .btn-submit': 'submit',
 			'click .btn-cancel': 'cancel',
-			'keyup input': 'keyHandler'
+			'keyup .goals-edit input': 'keyHandler'
 		},
 
 		initialize: function (options) {
@@ -89,10 +89,10 @@ var app = app || {};
 
 		submit: function () {
 			this.model.save({
-				calories: this.$('.calories input').val().trim(),
-				carbo: this.$('.carbo input').val().trim(),
-				fat: this.$('.fat input').val().trim(),
-				protein: this.$('.protein input').val().trim()
+				calories: this.$('.calories input').val().trim() || this.model.get('calories'),
+				carbo: this.$('.carbo input').val().trim()  || this.model.get('carbo'),
+				fat: this.$('.fat input').val().trim()  || this.model.get('fat'),
+				protein: this.$('.protein input').val().trim()  || this.model.get('protein')
 			});
 
 			this.endEdit();
