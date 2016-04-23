@@ -9,8 +9,9 @@ var app = app || {};
 
 		events: {
 			'mouseover .search-form': 'focusOnSearch',
-			'keyup .search-form' : 'newSearch',
-			'click .btn-loadmore' : 'loadMore'
+			'keyup .search-form': 'newSearch',
+			'click .btn-loadmore': 'loadMore',
+			'click .btn-clear': 'reset'
 		},
 
 		initialize: function () {
@@ -23,9 +24,11 @@ var app = app || {};
 				'setTotal',
 				'getTotal',
 				'clearAll',
+				'reset',
 				'getSearchURL',
 				'getSearchedFoodModel',
 				'newSearch',
+				'loadedSearch',
 				'loadMore',
 				'sendAjaxRequest',
 				'isAbleLoadMore'
@@ -37,6 +40,7 @@ var app = app || {};
 			this.$searchBar = this.$('.search-form input');
 			this.$noResultBar = this.$('.no-result');
 			this.$loadMoreBtn = this.$('.btn-loadmore');
+			this.$clearBtn = this.$('.btn-clear');
 			this.$searchResultsNumber = this.$('.search-results-number');
 
 			// Vars to track of searches
@@ -49,9 +53,11 @@ var app = app || {};
 				e.preventDefault();
 			});
 
-			// Bind to collection changes
+			// Bind to collection and view property changes
 			this.on('change:ajaxTotal', this.changeTotal);
+			this.on('loadedSearch', this.loadedSearch);
 			this.listenTo(this.collection, 'add', this.addOne);
+			this.listenTo(this.collection, 'update', this.render);
 
 			// Load initial items, if any
 			this.collection.each(function (model) {
@@ -60,28 +66,16 @@ var app = app || {};
 				});
 				this.$list.append(newView.render().el);
 			}, this);
+
+			this.render();
 		},
 
-		//In this specific collection for search results,
-		//The only rendering is after the new search results arrives.
 		render: function () {
-			this.toggleLoading('show');
-			this.toggleLoadMoreBtn('show');
-
-			// Toggle "No result" message bar
 			if (this.collection.length === 0) {
-				this.$noResultBar.show('fast');
-			} else {
-				this.$noResultBar.hide('fast');
-			}
-
-			// Toggle "Load more" button
-			if (this.isAbleLoadMore()) {
-				// Move the loadMore button to the last
-				this.$list.append(this.$loadMoreBtn);
-				this.$loadMoreBtn.show('fast');
-			} else {
 				this.$loadMoreBtn.hide('fast');
+				this.$clearBtn.prop('disabled', true);
+			} else {
+				this.$clearBtn.prop('disabled', false);
 			}
 		},
 
@@ -156,6 +150,12 @@ var app = app || {};
 			});
 		},
 
+		reset: function () {
+			this.clearAll();
+			this.$searchResultsNumber.hide('fast');
+			this.$searchBar.val('');
+		},
+
 		getSearchURL: function () {
 			var URLPrefix = 'https://api.nutritionix.com/v1_1/search/';
 			var URLSuffix = '&fields=item_name,brand_name,item_id,nf_calories,nf_total_carbohydrate,nf_total_fat,nf_protein,nf_serving_size_qty,nf_serving_size_unit,nf_serving_weight_grams';
@@ -211,6 +211,35 @@ var app = app || {};
 			this.sendAjaxRequest();
 		},
 
+		loadedSearch: function () {
+			var self = this;
+
+			// load contents
+			this.setTotal(this.ajaxRequest.responseJSON.total_hits);
+			this.ajaxRequest.responseJSON.hits.forEach(function (item) {
+				self.collection.add(self.getSearchedFoodModel(item));
+			});
+
+			this.toggleLoading('show');
+			this.toggleLoadMoreBtn('show');
+
+			// Toggle "No result" message bar
+			if (this.collection.length === 0) {
+				this.$noResultBar.show('fast');
+			} else {
+				this.$noResultBar.hide('fast');
+			}
+
+			// Toggle "Load more" button
+			if (this.isAbleLoadMore()) {
+				// Move the loadMore button to the last
+				this.$list.append(this.$loadMoreBtn);
+				this.$loadMoreBtn.show('fast');
+			} else {
+				this.$loadMoreBtn.hide('fast');
+			}
+		},
+
 		sendAjaxRequest: function () {
 			var self = this;
 
@@ -221,18 +250,15 @@ var app = app || {};
 			}
 
 			this.ajaxRequest = $.getJSON(this.getSearchURL(), function(json) {
-				self.setTotal(json.total_hits);
-				json.hits.forEach(function (item) {
-					self.collection.add(self.getSearchedFoodModel(item));
-				});
+
+				self.trigger('loadedSearch');
+
 			}).fail(function (jqXHR, textStatus) {
 				// If the error is caused by our abortion, then don't worry about it
 				if (textStatus !== 'abort') {
 					alert('Search result failed to load.');
 					self.setTotal(0);
 				}
-			}).always(function () {
-				self.render();
 			});
 		},
 
