@@ -27,7 +27,7 @@ var app = app || {};
 		},
 
 		addToRecord: function () {
-			app.recordedCollection.add(new app.RecordedFood(this.model.attributes));
+			app.recordedCollection.create(new app.RecordedFood(this.model.attributes));
 		},
 
 		toggleDetails: function () {

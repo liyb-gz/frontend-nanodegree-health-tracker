@@ -99,7 +99,7 @@ var app = app || {};
 		},
 
 		submit: function () {
-			this.model.set({
+			this.model.save({
 				foodName: this.$('.food-name input').val().trim(),
 				servingNumber: parseFloat(this.$('.calories input').val())
 			});

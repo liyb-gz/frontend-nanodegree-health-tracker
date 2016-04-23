@@ -10,7 +10,8 @@ var app = app || {};
 			calories: 2080,
 			carbo: 310,
 			fat: 70,
-			protein: 50
+			protein: 50,
+			id: 0
 		},
 
 		localStorage: new Backbone.LocalStorage('nutrition-goals')
@@ -18,7 +19,5 @@ var app = app || {};
 
 	// I need to assign nutrition goals an ID
 	// in order for the localStorage to work on a single model
-	app.nutritionGoals = new app.NutritionGoals({
-		id: 0
-	});
+	app.nutritionGoals = new app.NutritionGoals();
 })(app);
