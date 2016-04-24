@@ -1,4 +1,4 @@
-/* globals Backbone, _, console, $*/
+/* global Backbone, _, $, ENTER_KEY, alert */
 
 var app = app || {};
 
@@ -267,7 +267,7 @@ var app = app || {};
 				this.ajaxRequest.abort();
 			}
 
-			this.ajaxRequest = $.getJSON(this.getSearchURL(), function(json) {
+			this.ajaxRequest = $.getJSON(this.getSearchURL(), function() {
 				self.trigger('loadedSearch');
 			}).fail(function (jqXHR, textStatus) {
 				// If the error is caused by our abortion, then don't worry about it

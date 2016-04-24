@@ -1,4 +1,4 @@
-/*globals _*/
+/*globals _, Backbone, ENTER_KEY*/
 var app = app || {};
 
 (function (app) {
@@ -104,9 +104,9 @@ var app = app || {};
 		submit: function () {
 			this.model.save({
 				calories: this.$('.calories input').val().trim() || this.model.get('calories'),
-				carbo: this.$('.carbo input').val().trim()  || this.model.get('carbo'),
-				fat: this.$('.fat input').val().trim()  || this.model.get('fat'),
-				protein: this.$('.protein input').val().trim()  || this.model.get('protein')
+				carbo: this.$('.carbo input').val().trim() || this.model.get('carbo'),
+				fat: this.$('.fat input').val().trim() || this.model.get('fat'),
+				protein: this.$('.protein input').val().trim() || this.model.get('protein')
 			});
 
 			this.endEdit();

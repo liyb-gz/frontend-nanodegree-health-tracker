@@ -1,9 +1,11 @@
+/* global app, $*/
+/* exported ENTER_KEY*/
+
 var ENTER_KEY = 13;
-var ESC_KEY = 27;
+var	app = app || {};
 
 (function (app) {
-	var app = app || {};
-
+	'use strict';
 	$(function () {
 		app.nutritionGoalsView = new app.NutritionGoalsView({
 			model: app.nutritionGoals

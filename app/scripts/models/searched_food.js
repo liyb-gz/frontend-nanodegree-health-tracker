@@ -12,7 +12,7 @@ var app = app || {};
 			unitFat: 0,
 			unitProtein: 0,
 			servingQty: 1,
-			servingUnit: 'serving',
+			servingUnit: 'serving'
 		}
 	});
 })(app);

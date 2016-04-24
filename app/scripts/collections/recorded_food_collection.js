@@ -1,4 +1,4 @@
-/* globals Backbone */
+/* globals Backbone, _ */
 var app = app || {};
 
 (function (app) {
@@ -17,7 +17,7 @@ var app = app || {};
 				sumCarbo: 0,
 				sumFat: 0,
 				sumProtein: 0
-			},
+			};
 
 			this.on('change:servingNumber update', this.updateSumNutrition);
 
@@ -31,7 +31,7 @@ var app = app || {};
 				sumCarbo: 0,
 				sumFat: 0,
 				sumProtein: 0
-			}
+			};
 
 			this.models.forEach(function (model) {
 				newSumNutrition.sumCalories += model.get('totalCalories');

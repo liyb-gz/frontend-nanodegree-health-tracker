@@ -1,3 +1,4 @@
+/* global Backbone, _ */
 var app = app || {};
 
 (function (app) {
@@ -27,10 +28,10 @@ var app = app || {};
 
 			var newView = new app.RecordedFoodView({
 				model: model,
-				nutritionGoals : self.nutritionGoals
+				nutritionGoals: self.nutritionGoals
 			});
 
 			this.$el.append(newView.render().el);
-		},
+		}
 	});
 })(app);

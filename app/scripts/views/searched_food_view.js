@@ -1,4 +1,4 @@
-/* globals Backbone, $, _, console*/
+/* global Backbone, $, _ */
 var app = app || {};
 
 (function (app) {
