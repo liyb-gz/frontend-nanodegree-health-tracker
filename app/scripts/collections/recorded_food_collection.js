@@ -10,6 +10,8 @@ var app = app || {};
 		initialize: function () {
 			_.bindAll(this, 'updateSumNutrition');
 
+			// Keeps tracks of the total nutrition data of the food in the list
+			// And updates when food data is added, deleted or edited
 			this.sumNutrition = {
 				sumCalories: 0,
 				sumCarbo: 0,
@@ -24,8 +26,6 @@ var app = app || {};
 		},
 
 		updateSumNutrition: function () {
-			var self = this;
-
 			var newSumNutrition = {
 				sumCalories: 0,
 				sumCarbo: 0,
@@ -41,12 +41,11 @@ var app = app || {};
 			});
 
 			this.sumNutrition = newSumNutrition;
+
+			// Event for the nutrition goals view to update accordingly
 			this.trigger('updateSum');
 		}
 	});
 
 	app.recordedCollection = new app.RecordedCollection();
 })(app);
-
-// TODO: delete this testing var
-// app.recordedCollection.add(testingRecordedFood);

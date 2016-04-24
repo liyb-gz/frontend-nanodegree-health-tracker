@@ -9,7 +9,6 @@ var app = app || {};
 		template: _.template($('#recorded-food-item-template').html()),
 
 		events: {
-			'click .btn-add': 'addToRecord',
 			'click .btn-detail': 'toggleDetails',
 			'click .btn-edit': 'edit',
 			'click .btn-drop': 'drop',
@@ -84,7 +83,7 @@ var app = app || {};
 			this.$('.btn-submit, .btn-cancel').show();
 			this.$('.btn-drop, .btn-edit').hide();
 
-			// Toggle the input boxes
+			// Toggle the input boxes and load the current contents
 			this.$('.food-name input').show().val(this.model.get('foodName'));
 			this.$('.food-name span').hide();
 			this.$('.calories input').show().val(this.model.get('servingNumber'));

@@ -25,25 +25,36 @@ var app = app || {};
 				'keyHandler'
 			);
 
+			// Keep the possibility to move the 100% percent line
 			options = options || {};
 			this.hundredPercentLine = options.hundredPercentLine || 80;
+
+			// Personally I want to avoid directly using 'app.something', so make a reference here
 			this.recordedCollection = app.recordedCollection;
 
+			// Nutrition panel
 			this.$nutritionFacts = this.$('.nutrition-facts');
+
+			// Buttons
 			this.$editBtn = this.$('.btn-edit');
 			this.$submitBtn = this.$('.btn-submit');
 			this.$cancelBtn = this.$('.btn-cancel');
 
+			// Progress Bars
 			this.$caloriesBar = this.$nutritionFacts.find('.calories .progress-bar');
 			this.$carboBar = this.$nutritionFacts.find('.carbo .progress-bar');
 			this.$fatBar = this.$nutritionFacts.find('.fat .progress-bar');
 			this.$proteinBar = this.$nutritionFacts.find('.protein .progress-bar');
 
+			// Bind events
 			this.listenTo(this.recordedCollection, 'updateSum', this.render);
 			this.listenTo(this.model, 'change', this.render);
 
-			this.$('.bar-step').attr('style', 'padding-left: ' + this.hundredPercentLine + '%');
+			// Get Datas
 			this.model.fetch();
+
+			// Set interface. 100% percent line is not supposed to update using render()
+			this.$('.bar-step').attr('style', 'padding-left: ' + this.hundredPercentLine + '%');
 			this.render();
 		},
 
@@ -74,17 +85,20 @@ var app = app || {};
 		},
 
 		edit: function () {
+			// Show edit panel
 			this.$nutritionFacts.find('.progress').hide();
 			this.$nutritionFacts.find('.goals-edit').show();
 
+			// Change buttons
+			this.$editBtn.hide();
+			this.$cancelBtn.show();
+			this.$submitBtn.show();
+
+			// Takes in the current data
 			this.$('.calories input').val(this.model.get('calories'));
 			this.$('.carbo input').val(this.model.get('carbo'));
 			this.$('.fat input').val(this.model.get('fat'));
 			this.$('.protein input').val(this.model.get('protein'));
-
-			this.$editBtn.hide();
-			this.$cancelBtn.show();
-			this.$submitBtn.show();
 		},
 
 		submit: function () {
@@ -103,17 +117,24 @@ var app = app || {};
 		},
 
 		endEdit: function () {
+			// Change panel
 			this.$nutritionFacts.find('.progress').show();
 			this.$nutritionFacts.find('.goals-edit').hide();
+
+			// Change buttons
 			this.$editBtn.show();
 			this.$cancelBtn.hide();
 			this.$submitBtn.hide();
 		},
 
+		// Utility function
+		// Takes in a number
+		// Returns an interger or a float rounded up to 2 decimals
 		round: function (number) {
 			return Math.round(number * 100) / 100;
 		},
 
+		// Submits when a user press 'enter'
 		keyHandler: function (e) {
 			if (e.which !== ENTER_KEY) {
 				return;
@@ -121,10 +142,6 @@ var app = app || {};
 				this.submit();
 			}
 		}
-	});
-
-	app.nutritionGoalsView = new app.NutritionGoalsView({
-		model: app.nutritionGoals
 	});
 })(app);
 

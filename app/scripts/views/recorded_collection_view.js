@@ -33,8 +33,4 @@ var app = app || {};
 			this.$el.append(newView.render().el);
 		},
 	});
-
-	app.recordedCollectionView = new app.RecordedCollectionView({
-		collection: app.recordedCollection
-	});
 })(app);

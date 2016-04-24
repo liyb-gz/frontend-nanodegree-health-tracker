@@ -34,21 +34,28 @@ var app = app || {};
 				'isAbleLoadMore'
 			);
 
+			// Panels
 			this.$list = this.$('.search-results-items');
+
+			// Information
 			this.$loadingBar = this.$('.loading');
-			this.$form = this.$('.search-form');
-			this.$searchBar = this.$('.search-form input');
 			this.$noResultBar = this.$('.no-result');
+			this.$searchResultsNumber = this.$('.search-results-number');
+
+			// Buttons
 			this.$loadMoreBtn = this.$('.btn-loadmore');
 			this.$clearBtn = this.$('.btn-clear');
-			this.$searchResultsNumber = this.$('.search-results-number');
+
+			// Search feature
+			this.$form = this.$('.search-form');
+			this.$searchBar = this.$('.search-form input');
 
 			// Vars to track of searches
 			this.searchKeyword = '';
 			this.ajaxRequest = undefined;
 			this.setTotal(0);
 
-			// Prevent form from submitting
+			// Prevent search form from submitting
 			this.$form.submit(function (e) {
 				e.preventDefault();
 			});
@@ -60,6 +67,7 @@ var app = app || {};
 			this.listenTo(this.collection, 'update', this.render);
 
 			// Load initial items, if any
+			// (mainly for future extensibility, as in the current version, I don't intend to keep the search result)
 			this.collection.each(function (model) {
 				var newView = new app.SearchedFoodView({
 					model: model
@@ -79,6 +87,7 @@ var app = app || {};
 			}
 		},
 
+		// Listens to collections' add event, and add an item view accordingly
 		addOne: function (item) {
 			var newView = new app.SearchedFoodView({
 				model: item
@@ -87,6 +96,7 @@ var app = app || {};
 			this.$list.append(newView.render().el);
 		},
 
+		// When user mouse over the search bar, it focuses automatically without clicking
 		focusOnSearch: function () {
 			this.$searchBar.focus();
 		},
@@ -127,6 +137,8 @@ var app = app || {};
 			}
 		},
 
+		// Setter of the total_hits value, trigger the change event
+		// So the 'xxx result found' span updates itself accordingly
 		setTotal: function (value) {
 			this.ajaxTotal = value;
 			this.trigger('change:ajaxTotal');
@@ -136,6 +148,7 @@ var app = app || {};
 			return this.ajaxTotal;
 		},
 
+		// Updates the 'XXX results found' span
 		changeTotal: function () {
 			if (this.getTotal() > 0) {
 				this.$searchResultsNumber.show('fast').find('.number').html(this.getTotal());
@@ -150,6 +163,7 @@ var app = app || {};
 			});
 		},
 
+		// Response to 'clear search result' button click
 		reset: function () {
 			this.clearAll();
 			this.$searchResultsNumber.hide('fast');
@@ -174,6 +188,7 @@ var app = app || {};
 				'&appKey=' + KEY;
 		},
 
+		// Reads data from the JSON files
 		getSearchedFoodModel: function (item) {
 			var model = {
 				foodName: item.fields.item_name,
@@ -199,6 +214,8 @@ var app = app || {};
 			// so that we can use the old keyword for 'loadMore' button
 			// insteading of always using the search bar's value
 			this.searchKeyword = this.$searchBar.val();
+
+			// Without this, on iPhone, the keyboard won't disappear
 			this.$searchBar.blur();
 
 			this.clearAll();
@@ -211,6 +228,7 @@ var app = app || {};
 			this.sendAjaxRequest();
 		},
 
+		// This being called means the search results has been returned
 		loadedSearch: function () {
 			var self = this;
 
@@ -250,9 +268,7 @@ var app = app || {};
 			}
 
 			this.ajaxRequest = $.getJSON(this.getSearchURL(), function(json) {
-
 				self.trigger('loadedSearch');
-
 			}).fail(function (jqXHR, textStatus) {
 				// If the error is caused by our abortion, then don't worry about it
 				if (textStatus !== 'abort') {
@@ -265,9 +281,5 @@ var app = app || {};
 		isAbleLoadMore: function () {
 			return this.collection.length < this.getTotal();
 		}
-	});
-
-	app.searchedCollectionView = new app.SearchedCollectionView({
-		collection: app.searchedCollection
 	});
 })(app);

@@ -13,7 +13,6 @@ var app = app || {};
 			unitProtein: 0,
 			servingQty: 1,
 			servingUnit: 'serving',
-			servingNumber: 1
 		}
 	});
 })(app);

@@ -26,6 +26,7 @@ var app = app || {};
 			return this;
 		},
 
+		// Add this search result to food record
 		addToRecord: function () {
 			app.recordedCollection.create(new app.RecordedFood(this.model.attributes));
 		},
