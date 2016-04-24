@@ -1,7 +1,6 @@
 .tmp
 node_modules
 bower_components
-dist
 images_src
 .sass-cache
 test/bower_components

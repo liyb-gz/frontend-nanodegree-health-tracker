@@ -1,0 +1,77 @@
+<!doctype html><html class="no-js" lang="en"><head><meta charset="utf-8"><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Project 5 HealthTracker</title><link rel="apple-touch-icon" href="apple-touch-icon.png"><!-- Place favicon.ico in the root directory --><link rel="stylesheet" href="styles/main.css"></head><body><!--[if lt IE 10]>
+			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]--><div class="header"><h3 class="text-muted">HealthTracker</h3></div><div class="jumbotron jumbotron-food"><div class="row"><div class="col-sm-6 search"><form class="search-form"><input type="text" class="form-control" placeholder="Search for your food!"></form><div class="well well-transparent search-results"><h3 class="text-muted search-results-title">Search Results <small class="search-results-number" style="display:none">(<span class="number">1000</span> results found)</small> <button class="btn btn-xs btn-clear pull-right" title="Clear search results"><span class="glyphicon glyphicon-trash"></span></button></h3><div class="row"><div class="col-sm-12 loading" style="display:none"><span class="glyphicon glyphicon-refresh animate" aria-hidden="true"></span> Loading...</div><div class="col-sm-12 search-results-items"><span class="no-result" style="display:none">Sorry, no result found.</span> <button class="btn btn-default btn-block btn-loadmore" style="display:none"><span class="done">Load more...</span> <span class="loading" style="display:none"><span class="glyphicon glyphicon-refresh animate" aria-hidden="true"></span> Loading...</span></button></div></div></div></div><div class="col-sm-6"><div class="well well-transparent recorded-foods"><div class="row"><div class="col-sm-12 stats"><div class="panel panel-default"><div class="panel-body"><h3 class="title">My Nutritions Today<div class="btn-group pull-right"><button class="btn btn-success btn-xs btn-submit" style="display: none" title="Save"><span class="glyphicon glyphicon-ok"></span></button> <button class="btn btn-default btn-xs btn-edit"><span class="glyphicon glyphicon-pencil" title="Edit my nutrition goals"></span></button> <button class="btn btn-danger btn-xs btn-cancel" style="display: none" title="Cancel"><span class="glyphicon glyphicon-remove"></span></button></div></h3><hr><div class="nutrition-facts"><div class="row calories"><div class="col-sm-3">Calories</div><div class="col-sm-9"><div class="progress"><div class="progress-bar progress-bar-primary" style="width: 0%"><span class="center"><span class="quantity"></span> kCal</span></div><div class="bar-step" style="padding-left: 80%"><div class="label-line"></div></div></div><div class="goals-edit" style="display: none"><div class="input-group"><input type="number" class="form-control" id="exampleInputAmount" placeholder="Amount"><div class="input-group-addon">kCal</div></div></div></div></div><div class="row carbo"><div class="col-sm-3">Carbohydrates</div><div class="col-sm-9"><div class="progress"><div class="progress-bar progress-bar-info" style="width: 0%"><span class="center"><span class="quantity"></span> g</span></div><div class="bar-step" style="padding-left: 80%"><div class="label-line"></div></div></div><div class="goals-edit" style="display: none"><div class="input-group"><input type="number" class="form-control" id="exampleInputAmount" placeholder="Amount"><div class="input-group-addon">g</div></div></div></div></div><div class="row fat"><div class="col-sm-3">Fat</div><div class="col-sm-9"><div class="progress"><div class="progress-bar progress-bar-warning" style="width: 0%"><span class="center"><span class="quantity"></span> g</span></div><div class="bar-step" style="padding-left: 80%"><div class="label-line"></div></div></div><div class="goals-edit" style="display: none"><div class="input-group"><input type="number" class="form-control" id="exampleInputAmount" placeholder="Amount"><div class="input-group-addon">g</div></div></div></div></div><div class="row protein"><div class="col-sm-3">Protein</div><div class="col-sm-9"><div class="progress"><div class="progress-bar progress-bar-success" style="width: 0%"><span class="center"><span class="quantity"></span> g</span></div><div class="bar-step" style="padding-left: 80%"><div class="label-line"></div></div></div><div class="goals-edit" style="display: none"><div class="input-group"><input type="number" class="form-control" id="exampleInputAmount" placeholder="Amount"><div class="input-group-addon">g</div></div></div></div></div></div></div></div></div><div class="col-sm-12 food-list"><div class="row"><div class="col-sm-12"></div></div></div></div></div></div></div></div><!-- Backbone Templates --><!-- Searched Food Item --><script type="text/template" id="searched-food-item-template"><div class="panel-body">
+				<div class="btn-group pull-right">
+					<button class="btn btn-default btn-xs btn-detail" title="Show / hide details"><span class="glyphicon glyphicon-resize-full"></span></button>
+					<button class="btn btn-default btn-xs btn-add" title="Add to my food records"><span class="glyphicon glyphicon-plus"></span></button>
+				</div>
+				<div class="food-abstract pull-left">
+					<h4 class="food-name"><%= foodName %><small> <%= brandName %></small>
+					</h4> <%= unitCalories %> kCal every <%= servingQty %> <%= servingUnit %> </div>
+			</div>
+			<div class="panel-body nutrition-facts" style="display:none;">
+				Carbohydrates <span class="pull-right"><%= unitCarbo %> g</span>
+				<hr>
+				Fat <span class="pull-right"><%= unitFat %> g</span>
+				<hr>
+				Protein <span class="pull-right"><%= unitProtein %> g</span>
+			</div></script><!-- Recorded Food Item --><script type="text/template" id="recorded-food-item-template"><div class="panel-body">
+				<div class="btn-group pull-right">
+					<button class="btn btn-default btn-xs btn-detail" title="Show / hide details"><span class="glyphicon glyphicon-resize-full"></span></button>
+					<button class="btn btn-default btn-xs btn-edit" title="Edit this record"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button class="btn btn-default btn-xs btn-drop" title="Delete this record"><span class="glyphicon glyphicon-trash"></span></button>
+					<button class="btn btn-success btn-xs btn-submit" title="Save" style="display: none;"><span class="glyphicon glyphicon-ok"></span></button>
+					<button class="btn btn-danger btn-xs btn-cancel" title="Cancel" style="display: none;"><span class="glyphicon glyphicon-remove"></span></button>
+				</div>
+				<div class="food-abstract pull-left">
+					<h4 class="food-name">
+						<span><%= foodName %></span>
+						<input style="display: none;" type="text">
+						<small> <%= brandName %></small>
+					</h4>
+					<div class="calories">
+						<b><%= totalCalories %> kCal</b> - <%= unitCalories %> kCal per serving (<%= servingQty %> <%= servingUnit %>), <span><%= servingNumber %></span><input style="display: none;" type="number"> serving(s)
+					</div>
+				</div>
+			</div>
+			<div class="panel-body nutrition-facts" <%= showingDetails ? '' : 'style="display:none;"' %>>
+				<div class="row carbo">
+					<div class="col-sm-3">Carbohydrates</div>
+					<div class="col-sm-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-info" style="width: <%= carboPercentage %>%;">
+								<span class="center"><%= totalCarbo %> g</span>
+							</div>
+							<div class="bar-step" style="padding-left: <%= hundredPercentLine %>%">
+								<div class="label-line"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row fat">
+					<div class="col-sm-3">Fat</div>
+					<div class="col-sm-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-warning" style="width: <%= fatPercentage %>%; ">
+								<span class="center"><%= totalFat %> g</span>
+							</div>
+							<div class="bar-step" style="padding-left: <%= hundredPercentLine %>%">
+								<div class="label-line"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row protein">
+					<div class="col-sm-3">Protein</div>
+					<div class="col-sm-9">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" style="width: <%= proteinPercentage %>%; ">
+								<span class="center"><%= totalProtein %> g</span>
+							</div>
+							<div class="bar-step" style="padding-left: <%= hundredPercentLine %>%">
+								<div class="label-line"></div>
+							</div
+						</div>
+					</div>
+				</div>
+			</div></script><script src="scripts/vendor.js"></script><script src="scripts/plugins.js"></script><script src="scripts/main.js"></script></body></html>
